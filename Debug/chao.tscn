@@ -12,7 +12,6 @@ script = ExtResource("1_xlnln")
 
 [node name="spritePlaceholder" type="Sprite2D" parent="." unique_id=713267003]
 self_modulate = Color(0, 0, 0, 1)
-position = Vector2(577, 581)
 scale = Vector2(8.9140625, 1)
 texture = ExtResource("1_dubep")
 
@@ -23,8 +22,8 @@ position = Vector2(-0.5609108, -1)
 shape = SubResource("RectangleShape2D_lgns8")
 
 [node name="LabelDebug" parent="." unique_id=1068818271 instance=ExtResource("3_2ftbl")]
-offset_left = 18.0
-offset_top = 502.0
-offset_right = 44.0
-offset_bottom = 518.0
+offset_left = -552.0
+offset_top = -79.0
+offset_right = -526.0
+offset_bottom = -63.0
 text = "chao"

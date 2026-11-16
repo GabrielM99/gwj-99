@@ -17,3 +17,5 @@ shape = SubResource("RectangleShape2D_lgns8")
 texture = ExtResource("2_juj8k")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 24)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1177892825]

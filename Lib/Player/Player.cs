@@ -3,10 +3,14 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	public const float Speed = 300.0f;
-	public const float JumpVelocity = -400.0f;
+	public const float Speed = 200.0f;
+	public const float LadderSpeed = 100.0f;
+	public const float JumpVelocity = -200.0f;
 
-	public override void _PhysicsProcess(double delta)
+    public bool CanUseLadder = false;
+
+
+    public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
 
@@ -28,7 +32,10 @@ public partial class Player : CharacterBody2D
 		if (direction != Vector2.Zero)
 		{
 			velocity.X = direction.X * Speed;
-		}
+			if (CanUseLadder){
+            	velocity.Y = direction.Y * LadderSpeed;
+			}
+        }
 		else
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);

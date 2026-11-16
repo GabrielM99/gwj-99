@@ -1,24 +1,15 @@
 [gd_scene format=3 uid="uid://cco67djofa2tf"]
 
-[ext_resource type="Texture2D" uid="uid://7ku41dsb3s1e" path="res://icon.svg" id="1_3bml8"]
 [ext_resource type="PackedScene" uid="uid://b060dhmgyfobk" path="res://Lib/Player/player.tscn" id="2_3uyst"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgns8"]
-size = Vector2(127.21473, 120)
+[ext_resource type="PackedScene" uid="uid://cfd11yy3gh8es" path="res://Debug/escada.tscn" id="3_4nspm"]
+[ext_resource type="PackedScene" uid="uid://vbufgqedt52t" path="res://Debug/chao.tscn" id="3_61nan"]
 
 [node name="Debug" type="Node2D" unique_id=1897988714]
 
-[node name="chao" type="Sprite2D" parent="." unique_id=238049158]
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(577, 581)
-scale = Vector2(8.9140625, 1)
-texture = ExtResource("1_3bml8")
-
-[node name="Area2D" type="StaticBody2D" parent="chao" unique_id=542740407]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chao/Area2D" unique_id=255597786]
-position = Vector2(-0.5609108, -1)
-shape = SubResource("RectangleShape2D_lgns8")
-
 [node name="Player" parent="." unique_id=2063339062 instance=ExtResource("2_3uyst")]
 position = Vector2(283, 460)
+
+[node name="escada" parent="." unique_id=1873721393 instance=ExtResource("3_4nspm")]
+position = Vector2(432, 495)
+
+[node name="chao" parent="." unique_id=50932700 instance=ExtResource("3_61nan")]

@@ -2,5 +2,10 @@
 
 [ext_resource type="Script" uid="uid://r1vid1aftfqd" path="res://Debug/LabelDebug/LabelDebug.cs" id="1_1kihh"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_21xjf"]
+font_size = 11
+
 [node name="LabelDebug" type="Label" unique_id=1068818271]
+text = "placeholder"
+label_settings = SubResource("LabelSettings_21xjf")
 script = ExtResource("1_1kihh")

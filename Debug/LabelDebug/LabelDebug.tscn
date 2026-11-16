@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bg2fme15ft8id"]
+
+[ext_resource type="Script" uid="uid://r1vid1aftfqd" path="res://Debug/LabelDebug/LabelDebug.cs" id="1_1kihh"]
+
+[node name="LabelDebug" type="Label" unique_id=1068818271]
+script = ExtResource("1_1kihh")

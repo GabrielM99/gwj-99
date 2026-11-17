@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SingletonInputManager="*uid://c2xaes3oukuv6"
+GlobalEventBus="*uid://djj57rds6kcj5"
 
 [display]
 

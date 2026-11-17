@@ -14,6 +14,11 @@ public partial class SingletonInputManager : Node
 
     [Signal]
     public delegate void ShowUIComputerEventHandler();
+    /// <summary>
+    /// Para ser utilizado junto do ShowUIComputer
+    /// </summary>
+    [Signal]
+    public delegate void ApplyCameraOffsetEventHandler();
     public override void _Ready()
     {
         Instance = this;
@@ -21,9 +26,9 @@ public partial class SingletonInputManager : Node
 
     public override void _UnhandledInput(InputEvent @event)
     {
-		//todo pensar melhor nisso aqui se vai ser assim, nao terminei de pensar
 		if (PodeInteragirComputador && @event.IsActionPressed("interagir")){
             EmitSignal(SignalName.ShowUIComputer);
+            EmitSignal(SignalName.ApplyCameraOffset);
         }
     }
 }

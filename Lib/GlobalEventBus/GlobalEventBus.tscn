@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://djj57rds6kcj5"]
+
+[ext_resource type="Script" uid="uid://cenn53poqydyq" path="res://Lib/GlobalEventBus/GlobalEventBus.cs" id="1_pcbmn"]
+
+[node name="GlobalEventBus" type="Node" unique_id=405099331]
+script = ExtResource("1_pcbmn")

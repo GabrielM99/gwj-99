@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cyfvsllg7dwp0" path="res://Lib/Player/Player.cs" id="1_a37b6"]
 [ext_resource type="Texture2D" uid="uid://kbfrags8ph6w" path="res://Lib/Player/sprite.png" id="2_juj8k"]
 [ext_resource type="PackedScene" uid="uid://bg2fme15ft8id" path="res://Debug/LabelDebug/LabelDebug.tscn" id="3_21xjf"]
+[ext_resource type="Script" uid="uid://dfk2pgxvsbqpa" path="res://Lib/Player/Camera2d.cs" id="3_bky6m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgns8"]
 size = Vector2(13, 20)
@@ -23,6 +24,8 @@ region_rect = Rect2(0, 0, 16, 24)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1177892825]
 zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+script = ExtResource("3_bky6m")
 
 [node name="LabelDebug" parent="." unique_id=1068818271 instance=ExtResource("3_21xjf")]
 offset_left = -18.0

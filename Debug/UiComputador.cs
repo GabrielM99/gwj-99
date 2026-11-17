@@ -10,7 +10,7 @@ public partial class UiComputador : CanvasLayer
     public override void _Ready()
 	{
         SingletonInputManager.Instance.ShowUIComputer += Show;
-        ButtonClose.Pressed += Hide;
+        ButtonClose.Pressed += Close;
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,4 +18,8 @@ public partial class UiComputador : CanvasLayer
 	{
 	}
     
+	private void Close(){
+        GlobalEventBus.Instance.EmitSignal(GlobalEventBus.SignalName.ResetCameraOffset);
+        Hide();
+    }
 }

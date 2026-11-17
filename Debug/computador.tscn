@@ -9,13 +9,20 @@ load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.cte
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgns8"]
 size = Vector2(97, 38)
 
-[node name="Computador" type="Node2D" unique_id=1510360596]
+[node name="Computador" type="Node2D" unique_id=1510360596 node_paths=PackedStringArray("areaDeteccao")]
 script = ExtResource("1_jvttq")
+areaDeteccao = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1236061706]
 self_modulate = Color(0.49411765, 0, 0.05490196, 1)
 scale = Vector2(0.3, 0.3)
 texture = SubResource("CompressedTexture2D_ty43j")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=281492459]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=958906232]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_lgns8")
 
 [node name="LabelDebug" parent="." unique_id=1068818271 instance=ExtResource("1_6s381")]
 offset_left = -31.0
@@ -23,9 +30,3 @@ offset_top = -36.0
 offset_right = 35.0
 offset_bottom = -20.0
 text = "computador"
-
-[node name="Area2D" type="Area2D" parent="." unique_id=281492459]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=958906232]
-position = Vector2(-0.5, 0)
-shape = SubResource("RectangleShape2D_lgns8")

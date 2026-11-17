@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cfd11yy3gh8es" path="res://Debug/escada.tscn" id="3_4nspm"]
 [ext_resource type="PackedScene" uid="uid://vbufgqedt52t" path="res://Debug/chao.tscn" id="3_61nan"]
 [ext_resource type="PackedScene" uid="uid://bymbbtapvysry" path="res://Debug/computador.tscn" id="4_61nan"]
+[ext_resource type="PackedScene" uid="uid://cy4oj3cy15wp8" path="res://Debug/ui_computador.tscn" id="5_2shxo"]
 
 [node name="Debug" type="Node2D" unique_id=1897988714]
 
@@ -23,4 +24,5 @@ scale = Vector2(0.76000243, 0.1999988)
 [node name="Computador" parent="." unique_id=1510360596 instance=ExtResource("4_61nan")]
 position = Vector2(174, 502)
 
-[node name="UIComputador" type="CanvasLayer" parent="." unique_id=786763417]
+[node name="UIComputador" parent="." unique_id=713065711 instance=ExtResource("5_2shxo")]
+visible = false

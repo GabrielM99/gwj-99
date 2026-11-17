@@ -15,6 +15,10 @@ run/main_scene="uid://cco67djofa2tf"
 config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SingletonInputManager="*uid://c2xaes3oukuv6"
+
 [display]
 
 window/stretch/mode="canvas_items"

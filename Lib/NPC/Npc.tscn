@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://o0bwd4afks62"]
+
+[ext_resource type="Script" uid="uid://boe02ov71oi2f" path="res://Lib/NPC/Npc.cs" id="1_0bmxt"]
+[ext_resource type="PackedScene" uid="uid://bg2fme15ft8id" path="res://Debug/LabelDebug/LabelDebug.tscn" id="2_22u08"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0bmxt"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[node name="Npc" type="Node2D" unique_id=244378393]
+script = ExtResource("1_0bmxt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=322924745]
+scale = Vector2(0.2, 0.2)
+texture = SubResource("CompressedTexture2D_0bmxt")
+
+[node name="LabelDebug" parent="." unique_id=1068818271 instance=ExtResource("2_22u08")]
+offset_left = -13.0
+offset_top = -26.0
+offset_right = 11.0
+offset_bottom = -10.0
+text = "npc"

@@ -3,12 +3,17 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	public const float Speed = 200.0f;
-	public const float LadderSpeed = 100.0f;
-	public const float JumpVelocity = -200.0f;
-
+	[Export]
+	public float Speed = 200.0f;
+	[Export]
+	public float LadderSpeed = 100.0f;
+	[Export]
+	public float JumpVelocity = -200.0f;
+	[Export]
     public bool CanUseLadder = false;
 
+    [Export]
+    public Sprite2D sprite;
 
     public override void _PhysicsProcess(double delta)
 	{
@@ -28,11 +33,13 @@ public partial class Player : CharacterBody2D
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("andar_esquerda", "andar_direita", "subir", "descer");
+		Vector2 direction = Input.GetVector("andar_esquerda", "andar_direita", /*"subir",*/"pular", "descer");
 		if (direction != Vector2.Zero)
 		{
 			velocity.X = direction.X * Speed;
-			if (CanUseLadder){
+            sprite.FlipH = direction.X < 0;
+
+            if (CanUseLadder){
             	velocity.Y = direction.Y * LadderSpeed;
 			}
         }

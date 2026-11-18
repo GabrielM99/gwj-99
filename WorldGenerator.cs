@@ -25,7 +25,7 @@ public partial class WorldGenerator : Node
 
                 if (distance > 3 && distance <= halfSize)
                 {
-                    Tilemap.SetTile(position, RockFGTile, 0);
+                    Tilemap.SetTile(position, RockFGTile, 1);
 
                     if (distance < halfSize - 2)
                     {
@@ -33,7 +33,7 @@ public partial class WorldGenerator : Node
                         {
                             for (int j = -1; j <= 1; j++)
                             {
-                                Tilemap.SetTile(position + new Vector2I(i, j), RockBGTile, 1);
+                                Tilemap.SetTile(position + new Vector2I(i, j), RockBGTile, 0);
                             }
                         }
                     }

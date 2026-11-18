@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dfk2pgxvsbqpa" path="res://Lib/Player/Camera2d.cs" id="3_bky6m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgns8"]
-size = Vector2(13, 20)
+size = Vector2(27, 59)
 
 [node name="Player" type="CharacterBody2D" unique_id=2063339062 node_paths=PackedStringArray("sprite")]
 z_index = 1
@@ -14,7 +14,7 @@ script = ExtResource("1_a37b6")
 sprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1152120286]
-position = Vector2(0.5, 2)
+position = Vector2(0.5, 2.5)
 shape = SubResource("RectangleShape2D_lgns8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1209198569]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="gwj-99"
-run/main_scene="uid://cco67djofa2tf"
+run/main_scene="uid://bcd3eu6kn14la"
 config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,10 @@ GlobalEventBus="*uid://djj57rds6kcj5"
 
 [display]
 
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

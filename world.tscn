@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bcd3eu6kn14la"]
+
+[ext_resource type="Script" uid="uid://chlw1sj57dfkq" path="res://WorldGenerator.cs" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://cahdspen7cv53" path="res://tilemap.tscn" id="2_fj7yv"]
+[ext_resource type="Texture2D" uid="uid://cq68hlbpcwoo1" path="res://Sprites/Cave_BG_Pattern 64x64.png" id="3_tlwt5"]
+[ext_resource type="Script" uid="uid://bquqhvww1huu6" path="res://Parallax.cs" id="4_aqk2v"]
+
+[node name="World" type="Node2D" unique_id=760113448]
+
+[node name="WorldGenerator" type="Node" parent="." unique_id=1910229712 node_paths=PackedStringArray("Tilemap")]
+script = ExtResource("1_f3sb7")
+Tilemap = NodePath("../Tilemap")
+Size = 40
+
+[node name="Tilemap" parent="." unique_id=1398780299 instance=ExtResource("2_fj7yv")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1217337197]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D" unique_id=940737905]
+z_index = -10
+texture_repeat = 2
+texture = ExtResource("3_tlwt5")
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 360)
+
+[node name="Parallax" type="Node2D" parent="Camera2D" unique_id=778090578 node_paths=PackedStringArray("Sprite", "Camera")]
+script = ExtResource("4_aqk2v")
+Sprite = NodePath("../Sprite2D")
+Camera = NodePath("..")
+Speed = 0.5

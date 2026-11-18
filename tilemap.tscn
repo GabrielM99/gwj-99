@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cahdspen7cv53"]
+
+[ext_resource type="Script" uid="uid://rbtgg7hdh4e5" path="res://DualGridTilemap.cs" id="1_f3sb7"]
+[ext_resource type="TileSet" uid="uid://c1ddrhocyu77u" path="res://tileset.tres" id="2_nsmjb"]
+
+[node name="Tilemap" type="Node2D" unique_id=1398780299 node_paths=PackedStringArray("worldMapLayer", "grassDisplayMapLayer", "dirtDisplayMapLayer")]
+script = ExtResource("1_f3sb7")
+worldMapLayer = NodePath("WorldTileMapLayer")
+grassDisplayMapLayer = NodePath("RockBGMapLayer")
+dirtDisplayMapLayer = NodePath("RockFGMapLayer")
+
+[node name="WorldTileMapLayer" type="TileMapLayer" parent="." unique_id=1318111512]
+tile_set = ExtResource("2_nsmjb")
+
+[node name="RockFGMapLayer" type="TileMapLayer" parent="." unique_id=1137562697]
+visible = false
+position = Vector2(8, 8)
+tile_set = ExtResource("2_nsmjb")
+
+[node name="RockBGMapLayer" type="TileMapLayer" parent="." unique_id=885693874]
+z_index = -1
+position = Vector2(8, 8)
+tile_set = ExtResource("2_nsmjb")

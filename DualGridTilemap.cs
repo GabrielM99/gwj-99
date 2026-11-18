@@ -1,167 +1,234 @@
+
 using Godot;
 using System.Collections.Generic;
-using static TileType;
-using static TerrainType;
 
 [Tool]
 public partial class DualGridTilemap : Node2D
 {
-    public static readonly int TILE_SIZE = 16;
-    public static readonly int HALF_TILE_SIZE = TILE_SIZE / 2;
-    readonly Vector2I[] NEIGHBOURS = [new(0, 0), new(1, 0), new(0, 1), new(1, 1)];
+    private enum TileType
+    {
+        None,
+        Some
+    }
 
-    private static readonly Dictionary<(TileType, TileType, TileType, TileType), Vector2I> neighboursToAtlasCoord = new() {
-        { ( Some, Some, Some, Some ), new Vector2I(2, 1) }, // All corners
-        { ( None, None, None, Some ), new Vector2I(1, 3) }, // Outer bottom-right corner
-        { ( None, None, Some, None ), new Vector2I(0, 0) }, // Outer bottom-left corner
-        { ( None, Some, None, None ), new Vector2I(0, 2) }, // Outer top-right corner
-        { ( Some, None, None, None ), new Vector2I(3, 3) }, // Outer top-left corner
-        { ( None, Some, None, Some ), new Vector2I(1, 0) }, // Right edge
-        { ( Some, None, Some, None ), new Vector2I(3, 2) }, // Left edge
-        { ( None, None, Some, Some ), new Vector2I(3, 0) }, // Bottom edge
-        { ( Some, Some, None, None ), new Vector2I(1, 2) }, // Top edge
-        { ( None, Some, Some, Some ), new Vector2I(1, 1) }, // Inner bottom-right corner
-        { ( Some, None, Some, Some ), new Vector2I(2, 0) }, // Inner bottom-left corner
-        { ( Some, Some, None, Some ), new Vector2I(2, 2) }, // Inner top-right corner
-        { ( Some, Some, Some, None ), new Vector2I(3, 1) }, // Inner top-left corner
-        { ( None, Some, Some, None ), new Vector2I(2, 3) }, // Bottom-left top-right corners
-        { ( Some, None, None, Some ), new Vector2I(0, 1) }, // Top-left down-right corners
-        { ( None, None, None, None ), new Vector2I(-1, -1) } // No corners, will be treated as empty tile
+    [Export] public int TileSize { get; set; } = 16;
+
+    [Export] public TileMapLayer WorldMapLayer { get; set; }
+    [Export] public TileMapLayer DisplayMapLayer { get; set; }
+
+    private bool _isDirty;
+
+    private readonly List<TileMapLayer> _worldLayers = [];
+    private readonly Godot.Collections.Array<Tile> _tiles = [];
+    private readonly Dictionary<(int Z, int SourceID), TileMapLayer> _displayLayers = [];
+    private readonly Dictionary<int, Tile> _tilesBySourceID = [];
+
+    private static readonly Vector2I[] Neighbours =
+    [
+        new(0, 0),
+        new(1, 0),
+        new(0, 1),
+        new(1, 1)
+    ];
+
+    private static readonly Dictionary<(TileType, TileType, TileType, TileType), Vector2I> NeighboursToAtlasCoord = new()
+    {
+        { (TileType.Some, TileType.Some, TileType.Some, TileType.Some), new(2, 1) },
+        { (TileType.None, TileType.None, TileType.None, TileType.Some), new(1, 3) },
+        { (TileType.None, TileType.None, TileType.Some, TileType.None), new(0, 0) },
+        { (TileType.None, TileType.Some, TileType.None, TileType.None), new(0, 2) },
+        { (TileType.Some, TileType.None, TileType.None, TileType.None), new(3, 3) },
+        { (TileType.None, TileType.Some, TileType.None, TileType.Some), new(1, 0) },
+        { (TileType.Some, TileType.None, TileType.Some, TileType.None), new(3, 2) },
+        { (TileType.None, TileType.None, TileType.Some, TileType.Some), new(3, 0) },
+        { (TileType.Some, TileType.Some, TileType.None, TileType.None), new(1, 2) },
+        { (TileType.None, TileType.Some, TileType.Some, TileType.Some), new(1, 1) },
+        { (TileType.Some, TileType.None, TileType.Some, TileType.Some), new(2, 0) },
+        { (TileType.Some, TileType.Some, TileType.None, TileType.Some), new(2, 2) },
+        { (TileType.Some, TileType.Some, TileType.Some, TileType.None), new(3, 1) },
+        { (TileType.None, TileType.Some, TileType.Some, TileType.None), new(2, 3) },
+        { (TileType.Some, TileType.None, TileType.None, TileType.Some), new(0, 1) },
+        { (TileType.None, TileType.None, TileType.None, TileType.None), new(-1, -1) }
     };
-
-    [Export] TileMapLayer worldMapLayer; // should be set in the editor
-    [Export] TileMapLayer grassDisplayMapLayer; // should be set in the editor
-    [Export] TileMapLayer dirtDisplayMapLayer; // should be set in the editor
-    [Export] public Vector2I grassPlaceholderAtlasCoords; // should be set in the editor
-    [Export] public Vector2I dirtPlaceholderAtlasCoords; // should be set in the editor
-    int placeholderSourceId = 0;
 
     public override void _Ready()
     {
-        RefreshAllTiles();
-    }
-
-    public void RefreshAllTiles()
-    {
-        foreach (Vector2I cellPos in worldMapLayer.GetUsedCells())
+        if (WorldMapLayer != null)
         {
-            // Refresh each display layer with its own terrain type
-            // This ensures each layer recalculates based on matching neighbors
-            //RefreshDisplayTile(cellPos, dirtDisplayMapLayer, RockFG);
-            RefreshDisplayTile(cellPos, grassDisplayMapLayer, RockBG);
+            _worldLayers.Add(WorldMapLayer);
         }
+
+        _isDirty = true;
     }
 
     public override void _Process(double delta)
     {
-        // optional - allows you to see changes in editor but may be costly
-        // if (Engine.IsEditorHint())
-        // {
-        //     RefreshAllTiles();
-        // }
-    }
-
-    public Vector2I LocalToMap(Vector2 pos)
-    {
-        return worldMapLayer.LocalToMap(pos);
-    }
-
-    public void SetTile(Vector2I coords, TerrainType terrainType)
-    {
-        TerrainType oldTerrainType = GetTerrainType(coords);
-
-        worldMapLayer.SetCell(coords, placeholderSourceId, GetPlaceholderAtlasCoords(terrainType));
-        RefreshDisplayTile(coords, GetDisplayLayer(terrainType), terrainType);
-
-        // Refresh old display tiles if changing terrain type
-        if (oldTerrainType != terrainType && oldTerrainType != Empty)
+        if (!_isDirty)
         {
-            RefreshDisplayTile(coords, GetDisplayLayer(oldTerrainType), oldTerrainType);
+            return;
         }
+
+        RefreshAllTiles();
+        _isDirty = false;
     }
 
-    void RefreshDisplayTile(Vector2I pos, TileMapLayer displayLayer, TerrainType terrainType)
+    public Vector2I LocalToMap(Vector2 position, int z = 0)
     {
-        // loop through 4 display neighbours
-        for (int i = 0; i < NEIGHBOURS.Length; i++)
+        return EnsureWorldLayer(z).LocalToMap(position);
+    }
+
+    public void SetTile(Vector2I coords, Tile tile, int z = 0)
+    {
+        if (z < 0)
         {
-            Vector2I newPos = pos + NEIGHBOURS[i];
-            Vector2I atlasCoords = CalculateDisplayTileAtlasCoords(newPos, terrainType);
-            displayLayer.SetCell(newPos, (int)terrainType, atlasCoords);
+            GD.PrintErr("Z cannot be negative.");
+            return;
         }
-    }
 
-    Vector2I CalculateDisplayTileAtlasCoords(Vector2I coords, TerrainType terrainType)
-    {
-        // get 4 world tile neighbours
-        TileType botRight = GetMatchingTileType(coords - NEIGHBOURS[0], terrainType);
-        TileType botLeft = GetMatchingTileType(coords - NEIGHBOURS[1], terrainType);
-        TileType topRight = GetMatchingTileType(coords - NEIGHBOURS[2], terrainType);
-        TileType topLeft = GetMatchingTileType(coords - NEIGHBOURS[3], terrainType);
+        if (tile != null)
+        {
+            _tilesBySourceID[tile.SourceID] = tile;
+        }
 
-        // return tile (atlas coord) that fits the neighbour rules
-        return neighboursToAtlasCoord[new(topLeft, topRight, botLeft, botRight)];
-    }
+        TileMapLayer worldLayer = EnsureWorldLayer(z);
 
-    TileType GetMatchingTileType(Vector2I coords, TerrainType terrainType)
-    {
-        Vector2I targetPlaceholderAtlasCoords = GetPlaceholderAtlasCoords(terrainType);
-        Vector2I atlasCoord = worldMapLayer.GetCellAtlasCoords(coords);
-        if (atlasCoord != targetPlaceholderAtlasCoords)
-            return None;
+        if (tile == null)
+        {
+            worldLayer.EraseCell(coords);
+        }
         else
-            return Some;
+        {
+            worldLayer.SetCell(coords, tile.SourceID, Vector2I.Zero);
+        }
+
+        _isDirty = true;
     }
 
-    Vector2I GetPlaceholderAtlasCoords(TerrainType terrainType)
+    private TileMapLayer EnsureWorldLayer(int z)
     {
-        return terrainType switch
+        while (_worldLayers.Count <= z)
         {
-            RockBG => grassPlaceholderAtlasCoords,
-            RockFG => dirtPlaceholderAtlasCoords,
-            _ => -Vector2I.One
-        };
+            int currentZ = _worldLayers.Count;
+
+            TileMapLayer layer;
+
+            if (currentZ == 0)
+            {
+                layer = WorldMapLayer;
+            }
+            else
+            {
+                layer = DuplicateLayer(WorldMapLayer, $"World_Z{currentZ}");
+            }
+
+            layer.Clear();
+            layer.ZIndex = currentZ * 100;
+
+            _worldLayers.Add(layer);
+        }
+
+        return _worldLayers[z];
     }
 
-    TileMapLayer GetDisplayLayer(TerrainType terrainType)
+    private TileMapLayer EnsureDisplayLayer(int z, Tile tile)
     {
-        return terrainType switch
+        (int z, int SourceID) key = (z, tile.SourceID);
+
+        if (_displayLayers.TryGetValue(key, out TileMapLayer existing))
         {
-            RockBG => grassDisplayMapLayer,
-            RockFG => dirtDisplayMapLayer,
-            _ => null
-        };
+            return existing;
+        }
+
+        TileMapLayer layer;
+
+        if (_displayLayers.Count == 0)
+        {
+            layer = DisplayMapLayer;
+        }
+        else
+        {
+            layer = DuplicateLayer(DisplayMapLayer, $"Display_Z{z}_Source{tile.SourceID}");
+        }
+
+        layer.Clear();
+        layer.ZIndex = z * 100 + tile.SortingOrder;
+
+        _displayLayers.Add(key, layer);
+
+        return layer;
     }
 
-    TerrainType GetTerrainType(Vector2I cellPos)
+    private TileMapLayer DuplicateLayer(TileMapLayer template, string layerName)
     {
-        Vector2I placeholderAtlasCoords = worldMapLayer.GetCellAtlasCoords(cellPos);
-        switch (placeholderAtlasCoords)
+        TileMapLayer duplicate = (TileMapLayer)template.Duplicate();
+        duplicate.Name = layerName;
+
+        AddChild(duplicate);
+
+        duplicate.Transform = template.Transform;
+
+        return duplicate;
+    }
+
+    public void RefreshAllTiles()
+    {
+        foreach (TileMapLayer layer in _displayLayers.Values)
         {
-            case var coords when coords == grassPlaceholderAtlasCoords:
-                return RockBG;
-            case var coords when coords == dirtPlaceholderAtlasCoords:
-                return RockFG;
-            case var coords when coords == -Vector2I.One:
-                return Empty;
-            default:
-                GD.PrintErr($"Unknown placeholder atlas coords: {placeholderAtlasCoords}. Defaulting to Grass.");
-                return RockBG;
+            layer.Clear();
+        }
+
+        for (int z = 0; z < _worldLayers.Count; z++)
+        {
+            TileMapLayer worldLayer = _worldLayers[z];
+
+            foreach (Vector2I cellPos in worldLayer.GetUsedCells())
+            {
+                int sourceID = worldLayer.GetCellSourceId(cellPos);
+
+                if (!_tilesBySourceID.TryGetValue(sourceID, out Tile tile))
+                {
+                    continue;
+                }
+
+                TileMapLayer displayLayer = EnsureDisplayLayer(z, tile);
+                RefreshDisplayTile(worldLayer, displayLayer, cellPos, tile);
+            }
         }
     }
-}
 
-public enum TileType
-{
-    None,
-    Some,
-}
+    private void RefreshDisplayTile(TileMapLayer worldLayer, TileMapLayer displayLayer, Vector2I position, Tile tile)
+    {
+        foreach (Vector2I neighbour in Neighbours)
+        {
+            Vector2I displayPos = position + neighbour;
+            Vector2I atlasCoords = CalculateDisplayTileAtlasCoords(worldLayer, displayPos, tile);
 
-// The number should correspond to the sourceId in the TileSet
-public enum TerrainType
-{
-    Empty = -1,
-    RockBG = 1,
-    RockFG = 2,
-    Sand = 3,
+            if (atlasCoords == -Vector2I.One)
+            {
+                displayLayer.EraseCell(displayPos);
+                continue;
+            }
+
+            displayLayer.SetCell(displayPos, tile.SourceID, atlasCoords);
+        }
+    }
+
+    private Vector2I CalculateDisplayTileAtlasCoords(TileMapLayer worldLayer, Vector2I coords, Tile targetTile)
+    {
+        TileType botRight = GetMatchingTileType(worldLayer, coords - Neighbours[0], targetTile);
+        TileType botLeft = GetMatchingTileType(worldLayer, coords - Neighbours[1], targetTile);
+        TileType topRight = GetMatchingTileType(worldLayer, coords - Neighbours[2], targetTile);
+        TileType topLeft = GetMatchingTileType(worldLayer, coords - Neighbours[3], targetTile);
+
+        return NeighboursToAtlasCoord[(topLeft, topRight, botLeft, botRight)];
+    }
+
+    private TileType GetMatchingTileType(TileMapLayer worldLayer, Vector2I coords, Tile targetTile)
+    {
+        int sourceID = worldLayer.GetCellSourceId(coords);
+
+        return sourceID == targetTile.SourceID
+            ? TileType.Some
+            : TileType.None;
+    }
 }

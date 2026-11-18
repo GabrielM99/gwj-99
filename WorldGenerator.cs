@@ -4,6 +4,8 @@ public partial class WorldGenerator : Node
 {
     [Export] public DualGridTilemap Tilemap { get; private set; }
     [Export] public int Size { get; private set; } = 64;
+    [Export] public Tile RockFGTile { get; private set; }
+    [Export] public Tile RockBGTile { get; private set; }
 
     public override void _Ready()
     {
@@ -23,12 +25,16 @@ public partial class WorldGenerator : Node
 
                 if (distance > 3 && distance <= halfSize)
                 {
-                    Tilemap.SetTile(position, TerrainType.RockBG);
+                    Tilemap.SetTile(position, RockFGTile, 0);
 
-                    for (int i = -1; i <= 1; i++)
+                    if (distance < halfSize - 2)
                     {
-                        for (int j = -1; j <= 1; j++)
+                        for (int i = -1; i <= 1; i++)
                         {
+                            for (int j = -1; j <= 1; j++)
+                            {
+                                Tilemap.SetTile(position + new Vector2I(i, j), RockBGTile, 1);
+                            }
                         }
                     }
                 }

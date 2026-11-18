@@ -11,6 +11,7 @@ size = Vector2(97, 38)
 
 [node name="Computador" type="Node2D" unique_id=1510360596 node_paths=PackedStringArray("areaDeteccao")]
 script = ExtResource("1_jvttq")
+TipoComputador = 1
 areaDeteccao = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1236061706]

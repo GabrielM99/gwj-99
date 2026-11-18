@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bsayca18x8uyr"]
+
+[ext_resource type="Texture2D" uid="uid://cq68hlbpcwoo1" path="res://Sprites/Cave_BG_Pattern 64x64.png" id="1_diie0"]
+[ext_resource type="Script" uid="uid://bquqhvww1huu6" path="res://Parallax.cs" id="2_qqjab"]
+
+[node name="Camera2D" type="Camera2D" unique_id=665312177]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=543360829]
+z_index = -10
+texture_repeat = 2
+texture = ExtResource("1_diie0")
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 360)
+
+[node name="Parallax" type="Node2D" parent="." unique_id=1520325703 node_paths=PackedStringArray("Sprite", "Camera")]
+script = ExtResource("2_qqjab")
+Sprite = NodePath("../Sprite2D")
+Camera = NodePath("..")
+Speed = 0.5

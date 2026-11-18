@@ -15,9 +15,9 @@ public partial class WorldGenerator : Node
 
         GD.Print("Gerando mundo...");
 
-        for (int x = -halfSize; x < halfSize; x++)
+        for (int x = -halfSize; x <= halfSize; x++)
         {
-            for (int y = -halfSize; y < halfSize; y++)
+            for (int y = -halfSize; y <= halfSize; y++)
             {
                 Vector2I position = new(x, y);
 

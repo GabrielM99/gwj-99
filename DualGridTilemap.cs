@@ -225,7 +225,7 @@ public partial class DualGridTilemap : Node2D
         {
             Vector2I displayPos = position + neighbour;
 
-            foreach (var entry in _displayLayers)
+            foreach (KeyValuePair<(int Z, int SourceID), TileMapLayer> entry in _displayLayers)
             {
                 if (entry.Key.Z == z)
                 {

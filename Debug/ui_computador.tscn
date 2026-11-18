@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://tkr3n32p461u" path="res://Debug/UiComputador.cs" id="1_n5grf"]
 
-[node name="UIComputador" type="CanvasLayer" unique_id=713065711 node_paths=PackedStringArray("ButtonClose")]
+[node name="UIComputador" type="CanvasLayer" unique_id=713065711 node_paths=PackedStringArray("ButtonClose", "ContainerHorizontal")]
 script = ExtResource("1_n5grf")
 ButtonClose = NodePath("PanelContainer/VBoxContainer/HBoxContainer/ButtonClose")
+ContainerHorizontal = NodePath("PanelContainer/VBoxContainer")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=863775060]
 custom_minimum_size = Vector2(300, 0)

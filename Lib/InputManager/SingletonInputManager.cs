@@ -11,9 +11,12 @@ public partial class SingletonInputManager : Node
 
     [Export]
     public bool PodeInteragirComputador = false;
+    [Export]
+    public TipoComputadorEnum TipoComputadorParaAbrir = TipoComputadorEnum.nenhum;
+
 
     [Signal]
-    public delegate void ShowUIComputerEventHandler();
+    public delegate void ShowUIComputerEventHandler(TipoComputadorEnum TipoComputadorParaAbrir);
     /// <summary>
     /// Para ser utilizado junto do ShowUIComputer
     /// </summary>
@@ -27,7 +30,7 @@ public partial class SingletonInputManager : Node
     public override void _UnhandledInput(InputEvent @event)
     {
 		if (PodeInteragirComputador && @event.IsActionPressed("interagir")){
-            EmitSignal(SignalName.ShowUIComputer);
+            EmitSignal(SignalName.ShowUIComputer,Variant.From(TipoComputadorParaAbrir));
             EmitSignal(SignalName.ApplyCameraOffset);
         }
     }

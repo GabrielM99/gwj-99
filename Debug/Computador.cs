@@ -29,6 +29,7 @@ public partial class Computador : Node2D
         if (body is Player player){
             //aqui identifica que o jogador esta no range do pc e pode interagir
             SingletonInputManager.Instance.PodeInteragirComputador = true;
+            SingletonInputManager.Instance.TipoComputadorParaAbrir = TipoComputador;
         }
 	}
 
@@ -37,6 +38,7 @@ public partial class Computador : Node2D
 		if (body is Player player){
 			//aqui identifica que ele saiu e nao esta mais na frente do pc
             SingletonInputManager.Instance.PodeInteragirComputador = false;
+            SingletonInputManager.Instance.TipoComputadorParaAbrir = TipoComputadorEnum.nenhum;
         }
 	}
 }

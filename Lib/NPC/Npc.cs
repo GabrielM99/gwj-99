@@ -21,6 +21,16 @@ public partial class Npc : Node2D
     private Vector2 _direction = Vector2.Zero;
     private float _currentSpeed = 0f;
 
+    [Export]
+    private Vida _vida;
+
+    public override void _Ready()
+    {
+        if (_vida != null){
+            _vida.Morte += Morreu;
+        }
+    }
+
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _PhysicsProcess(double delta)
 	{
@@ -28,8 +38,6 @@ public partial class Npc : Node2D
 
         Vector2 Target = TargetPosition - GlobalPosition;
         float distancia = Target.Length();
-
-        // float distanciaPraParar = Speed * Speed / (2f * Desaceleracao);
 
         if (distancia < 1f){
             GlobalPosition = TargetPosition;
@@ -49,5 +57,9 @@ public partial class Npc : Node2D
         float step = Mathf.Min(_currentSpeed * dt, distancia);
         
 		GlobalPosition += Target.Normalized() * step;
+    }
+
+    private void Morreu(){
+        QueueFree();
     }
 }

@@ -1,4 +1,3 @@
-
 using Godot;
 using System.Collections.Generic;
 
@@ -16,7 +15,7 @@ public partial class DualGridTilemap : Node2D
     [Export] public TileMapLayer WorldMapLayer { get; set; }
     [Export] public TileMapLayer DisplayMapLayer { get; set; }
 
-    private bool _isDirty;
+    private readonly Dictionary<int, HashSet<Vector2I>> _dirtyTiles = [];
 
     private readonly List<TileMapLayer> _worldLayers = [];
     private readonly Godot.Collections.Array<Tile> _tiles = [];
@@ -58,18 +57,42 @@ public partial class DualGridTilemap : Node2D
             _worldLayers.Add(WorldMapLayer);
         }
 
-        _isDirty = true;
+        // Inicializa o display a partir dos tiles existentes.
+        foreach (Vector2I cellPos in WorldMapLayer.GetUsedCells())
+        {
+            MarkTileDirty(cellPos, 0);
+        }
     }
 
     public override void _Process(double delta)
     {
-        if (!_isDirty)
+        if (_dirtyTiles.Count == 0)
         {
             return;
         }
 
-        RefreshAllTiles();
-        _isDirty = false;
+        foreach ((int z, HashSet<Vector2I> positions) in _dirtyTiles)
+        {
+            TileMapLayer worldLayer = _worldLayers[z];
+
+            foreach (Vector2I position in positions)
+            {
+                RefreshDisplayAtPosition(worldLayer, z, position);
+            }
+        }
+
+        _dirtyTiles.Clear();
+    }
+
+    private void MarkTileDirty(Vector2I position, int z)
+    {
+        if (!_dirtyTiles.TryGetValue(z, out HashSet<Vector2I> positions))
+        {
+            positions = [];
+            _dirtyTiles[z] = positions;
+        }
+
+        positions.Add(position);
     }
 
     public Vector2I LocalToMap(Vector2 position, int z = 0)
@@ -101,7 +124,7 @@ public partial class DualGridTilemap : Node2D
             worldLayer.SetCell(coords, tile.SourceID, Vector2I.Zero);
         }
 
-        _isDirty = true;
+        MarkTileDirty(coords, z);
     }
 
     private TileMapLayer EnsureWorldLayer(int z)
@@ -192,6 +215,37 @@ public partial class DualGridTilemap : Node2D
 
                 TileMapLayer displayLayer = EnsureDisplayLayer(z, tile);
                 RefreshDisplayTile(worldLayer, displayLayer, cellPos, tile);
+            }
+        }
+    }
+
+    private void RefreshDisplayAtPosition(TileMapLayer worldLayer, int z, Vector2I position)
+    {
+        foreach (Vector2I neighbour in Neighbours)
+        {
+            Vector2I displayPos = position + neighbour;
+
+            foreach (var entry in _displayLayers)
+            {
+                if (entry.Key.Z == z)
+                {
+                    entry.Value.EraseCell(displayPos);
+                }
+            }
+
+            foreach (Tile tile in _tilesBySourceID.Values)
+            {
+                Vector2I atlasCoords = CalculateDisplayTileAtlasCoords(
+                    worldLayer,
+                    displayPos,
+                    tile
+                );
+
+                if (atlasCoords == -Vector2I.One)
+                    continue;
+
+                TileMapLayer displayLayer = EnsureDisplayLayer(z, tile);
+                displayLayer.SetCell(displayPos, tile.SourceID, atlasCoords);
             }
         }
     }

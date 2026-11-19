@@ -13,7 +13,7 @@ public partial class Player : CharacterBody2D
     public bool CanUseLadder = false;
 
     [Export]
-    public Sprite2D sprite;
+    public AnimatedSprite2D sprite;
 
     public override void _PhysicsProcess(double delta)
 	{

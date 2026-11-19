@@ -28,19 +28,19 @@ public partial class Player : CharacterBody2D
 		// Handle Jump.
 		if (Input.IsActionJustPressed("pular") && IsOnFloor())
 		{
-			velocity.Y = JumpVelocity;
+            velocity.Y = JumpVelocity;
 		}
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("andar_esquerda", "andar_direita", /*"subir",*/"pular", "descer");
+		Vector2 direction = Input.GetVector("andar_esquerda", "andar_direita", "subir", "descer");
 		if (direction != Vector2.Zero)
 		{
 			velocity.X = direction.X * Speed;
             sprite.FlipH = direction.X < 0;
 
             if (CanUseLadder){
-            	velocity.Y = direction.Y * LadderSpeed;
+                velocity.Y = direction.Y * LadderSpeed;
 			}
         }
 		else

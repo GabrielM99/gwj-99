@@ -18,6 +18,12 @@ public partial class Npc : Node2D
     [Export]
 	public Vector2 TargetPosition { get; set; } = Vector2.Zero;
 
+    /// <summary>
+    /// Deve ser definido por instancia
+    /// </summary>
+    [Export]
+    public TipoNpcEnum TipoNpc { get; set; }
+
     private Vector2 _direction = Vector2.Zero;
     private float _currentSpeed = 0f;
 

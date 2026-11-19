@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://vbufgqedt52t" path="res://Debug/chao.tscn" id="3_61nan"]
 [ext_resource type="PackedScene" uid="uid://bymbbtapvysry" path="res://Debug/computador.tscn" id="4_61nan"]
 [ext_resource type="PackedScene" uid="uid://cy4oj3cy15wp8" path="res://Debug/ui_computador.tscn" id="5_2shxo"]
+[ext_resource type="PackedScene" uid="uid://cadlmkr7y8ivk" path="res://Lib/Torre/torre.tscn" id="6_vacks"]
 
 [node name="Debug" type="Node2D" unique_id=1897988714]
 
@@ -26,3 +27,5 @@ position = Vector2(174, 502)
 
 [node name="UIComputador" parent="." unique_id=713065711 instance=ExtResource("5_2shxo")]
 visible = false
+
+[node name="Torre" parent="." unique_id=1292927292 instance=ExtResource("6_vacks")]

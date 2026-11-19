@@ -7,6 +7,9 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0bmxt"]
 load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgns8"]
+size = Vector2(23, 24)
+
 [node name="Npc" type="Node2D" unique_id=244378393]
 script = ExtResource("1_0bmxt")
 
@@ -22,3 +25,9 @@ offset_bottom = -10.0
 text = "npc"
 
 [node name="Vida" parent="." unique_id=231730683 instance=ExtResource("3_1d6qe")]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=806309445]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1453637491]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_lgns8")

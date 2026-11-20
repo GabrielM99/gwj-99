@@ -12,6 +12,8 @@ public partial class Player : CharacterBody2D
 	[Export]
     public bool CanUseLadder = false;
 
+    private bool OnLadder = false;
+
     [Export]
     public AnimatedSprite2D sprite;
 
@@ -20,7 +22,7 @@ public partial class Player : CharacterBody2D
 		Vector2 velocity = Velocity;
 
 		// Add the gravity.
-		if (!IsOnFloor())
+		if (!IsOnFloor() && !OnLadder)
 		{
 			velocity += GetGravity() * (float)delta;
 		}
@@ -34,18 +36,23 @@ public partial class Player : CharacterBody2D
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 direction = Input.GetVector("andar_esquerda", "andar_direita", "subir", "descer");
-		if (direction != Vector2.Zero)
+		if (direction.X != 0)
 		{
 			velocity.X = direction.X * Speed;
-            sprite.FlipH = direction.X < 0;
-
-            if (CanUseLadder){
-                velocity.Y = direction.Y * LadderSpeed;
-			}
-        }
+			sprite.FlipH = direction.X < 0;
+		}
 		else
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+		}
+
+		// Escada
+		OnLadder = CanUseLadder && (OnLadder || direction.Y != 0);
+		if (!CanUseLadder) OnLadder = false;
+
+		if (OnLadder)
+		{
+			velocity.Y = direction.Y * LadderSpeed; // 0 quando não aperta nada, então fica parado
 		}
 
 		Velocity = velocity;

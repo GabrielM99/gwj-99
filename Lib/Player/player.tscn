@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cyfvsllg7dwp0" path="res://Lib/Player/Player.cs" id="1_a37b6"]
 [ext_resource type="PackedScene" uid="uid://bg2fme15ft8id" path="res://Debug/LabelDebug/LabelDebug.tscn" id="3_21xjf"]
-[ext_resource type="Script" uid="uid://dfk2pgxvsbqpa" path="res://Lib/Player/Camera2d.cs" id="3_bky6m"]
 [ext_resource type="Texture2D" uid="uid://dv8a4qmy7rwml" path="res://Sprites/MarkSpriteSheet.png" id="5_j7q8a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgns8"]
@@ -73,11 +72,6 @@ sprite = NodePath("AnimatedSprite2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1152120286]
 position = Vector2(0.5, 2.5)
 shape = SubResource("RectangleShape2D_lgns8")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1177892825]
-zoom = Vector2(3, 3)
-position_smoothing_enabled = true
-script = ExtResource("3_bky6m")
 
 [node name="LabelDebug" parent="." unique_id=1068818271 instance=ExtResource("3_21xjf")]
 offset_left = -18.0

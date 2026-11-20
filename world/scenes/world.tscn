@@ -1,29 +1,29 @@
 [gd_scene format=3 uid="uid://bcd3eu6kn14la"]
 
-[ext_resource type="Script" uid="uid://chlw1sj57dfkq" path="res://WorldGenerator.cs" id="1_f3sb7"]
-[ext_resource type="Resource" uid="uid://caeidobmak7wc" path="res://rock_fg_tile.tres" id="2_dwbse"]
-[ext_resource type="PackedScene" uid="uid://cahdspen7cv53" path="res://tilemap.tscn" id="2_fj7yv"]
-[ext_resource type="Resource" uid="uid://c47lwve17rtls" path="res://rock_bg_tile.tres" id="3_pkg7o"]
-[ext_resource type="PackedScene" uid="uid://bsayca18x8uyr" path="res://camera.tscn" id="5_036b0"]
-[ext_resource type="PackedScene" uid="uid://b060dhmgyfobk" path="res://Lib/Player/player.tscn" id="6_dwbse"]
-[ext_resource type="Texture2D" uid="uid://7ku41dsb3s1e" path="res://icon.svg" id="7_pkg7o"]
-[ext_resource type="PackedScene" uid="uid://bymbbtapvysry" path="res://Debug/computador.tscn" id="8_wse8f"]
-[ext_resource type="PackedScene" uid="uid://cy4oj3cy15wp8" path="res://Debug/ui_computador.tscn" id="9_ic0uy"]
-[ext_resource type="PackedScene" uid="uid://cfd11yy3gh8es" path="res://Debug/escada.tscn" id="10_k3n1d"]
+[ext_resource type="Script" uid="uid://chlw1sj57dfkq" path="res://world/scripts/WorldGenerator.cs" id="1_fhsbw"]
+[ext_resource type="PackedScene" uid="uid://cahdspen7cv53" path="res://tiles/scenes/tilemap.tscn" id="2_fj7yv"]
+[ext_resource type="Resource" uid="uid://caeidobmak7wc" path="res://tiles/resources/rock_fg_tile.tres" id="2_le2xu"]
+[ext_resource type="Resource" uid="uid://c47lwve17rtls" path="res://tiles/resources/rock_bg_tile.tres" id="3_wqfff"]
+[ext_resource type="PackedScene" uid="uid://bsayca18x8uyr" path="res://world/scenes/camera.tscn" id="5_036b0"]
+[ext_resource type="PackedScene" uid="uid://b060dhmgyfobk" path="res://lib/Player/player.tscn" id="6_dwbse"]
+[ext_resource type="Texture2D" uid="uid://7ku41dsb3s1e" path="res://debug/textures/icon.svg" id="7_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://bymbbtapvysry" path="res://objects/scenes/computador.tscn" id="8_wse8f"]
+[ext_resource type="PackedScene" uid="uid://cy4oj3cy15wp8" path="res://ui/scenes/ui_computador.tscn" id="9_ic0uy"]
+[ext_resource type="PackedScene" uid="uid://cfd11yy3gh8es" path="res://objects/scenes/escada.tscn" id="10_k3n1d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbfbk"]
 size = Vector2(127.21473, 128)
 
 [node name="World" type="Node2D" unique_id=760113448]
 
-[node name="WorldGenerator" type="Node2D" parent="." unique_id=2078916199 node_paths=PackedStringArray("Tilemap")]
-script = ExtResource("1_f3sb7")
+[node name="Node" type="Node2D" parent="." unique_id=1473644539 node_paths=PackedStringArray("Tilemap")]
+script = ExtResource("1_fhsbw")
 Tilemap = NodePath("../Tilemap")
-RockFGTile = ExtResource("2_dwbse")
-RockBGTile = ExtResource("3_pkg7o")
+RockFGTile = ExtResource("2_le2xu")
+RockBGTile = ExtResource("3_wqfff")
 Size = 128
 CoreSize = 12
-Noise = 0.75
+Noise = 0.85
 
 [node name="Tilemap" parent="." unique_id=1398780299 instance=ExtResource("2_fj7yv")]
 

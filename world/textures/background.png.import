@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv8a4qmy7rwml"
-path="res://.godot/imported/MarkSpriteSheet.png-01e2d36bdb52754d6ac0e7a6f35a43b2.ctex"
+uid="uid://cq68hlbpcwoo1"
+path="res://.godot/imported/background.png-cab6f54ad2d9bfc263833ed707341ecc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/MarkSpriteSheet.png"
-dest_files=["res://.godot/imported/MarkSpriteSheet.png-01e2d36bdb52754d6ac0e7a6f35a43b2.ctex"]
+source_file="res://world/textures/background.png"
+dest_files=["res://.godot/imported/background.png-cab6f54ad2d9bfc263833ed707341ecc.ctex"]
 
 [params]
 

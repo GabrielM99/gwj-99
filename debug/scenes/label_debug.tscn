@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bg2fme15ft8id"]
 
-[ext_resource type="Script" uid="uid://r1vid1aftfqd" path="res://Debug/LabelDebug/LabelDebug.cs" id="1_1kihh"]
+[ext_resource type="Script" uid="uid://r1vid1aftfqd" path="res://debug/scripts/LabelDebug.cs" id="1_vep7k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_21xjf"]
 font_size = 11
@@ -8,4 +8,4 @@ font_size = 11
 [node name="LabelDebug" type="Label" unique_id=1068818271]
 text = "placeholder"
 label_settings = SubResource("LabelSettings_21xjf")
-script = ExtResource("1_1kihh")
+script = ExtResource("1_vep7k")

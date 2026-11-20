@@ -13,7 +13,7 @@ config_version=5
 config/name="gwj-99"
 run/main_scene="uid://bcd3eu6kn14la"
 config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://debug/textures/icon.svg"
 
 [autoload]
 

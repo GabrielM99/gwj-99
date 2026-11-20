@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cspe17vqxkosa"
-path="res://.godot/imported/BaseStoneBG_TileMap 64x64.png-208e998a9fd6d8c0addd2b5580c58791.ctex"
+uid="uid://7ku41dsb3s1e"
+path="res://.godot/imported/icon.svg-05839c2bf61963cf95b5a0082be95e6d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/BaseStoneBG_TileMap 64x64.png"
-dest_files=["res://.godot/imported/BaseStoneBG_TileMap 64x64.png-208e998a9fd6d8c0addd2b5580c58791.ctex"]
+source_file="res://debug/textures/icon.svg"
+dest_files=["res://.godot/imported/icon.svg-05839c2bf61963cf95b5a0082be95e6d.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

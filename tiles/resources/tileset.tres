@@ -1,8 +1,8 @@
 [gd_resource type="TileSet" format=3 uid="uid://c1ddrhocyu77u"]
 
-[ext_resource type="Texture2D" uid="uid://cq68hlbpcwoo1" path="res://Sprites/Cave_BG_Pattern 64x64.png" id="1_14fb3"]
-[ext_resource type="Texture2D" uid="uid://cmtkvvrbidkt6" path="res://Sprites/BaseStoneFG_TileMap 64x64.png" id="1_kg114"]
-[ext_resource type="Texture2D" uid="uid://cspe17vqxkosa" path="res://Sprites/BaseStoneBG_TileMap 64x64.png" id="2_ej02t"]
+[ext_resource type="Texture2D" uid="uid://cq68hlbpcwoo1" path="res://world/textures/background.png" id="1_14fb3"]
+[ext_resource type="Texture2D" uid="uid://cmtkvvrbidkt6" path="res://tiles/textures/rock_fg.png" id="1_kg114"]
+[ext_resource type="Texture2D" uid="uid://cspe17vqxkosa" path="res://tiles/textures/rock_bg.png" id="2_ej02t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p0366"]
 texture = ExtResource("1_14fb3")

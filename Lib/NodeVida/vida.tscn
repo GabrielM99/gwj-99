@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cithgfwbjq7h0"]
 
-[ext_resource type="Script" uid="uid://52gu8aow5s64" path="res://Lib/NodeVida/Vida.cs" id="1_8emxp"]
+[ext_resource type="Script" uid="uid://52gu8aow5s64" path="res://lib/NodeVida/Vida.cs" id="1_8emxp"]
 
 [node name="Vida" type="Node" unique_id=231730683]
 script = ExtResource("1_8emxp")

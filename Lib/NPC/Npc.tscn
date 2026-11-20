@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://o0bwd4afks62"]
 
-[ext_resource type="Script" uid="uid://boe02ov71oi2f" path="res://Lib/NPC/Npc.cs" id="1_0bmxt"]
-[ext_resource type="PackedScene" uid="uid://bg2fme15ft8id" path="res://Debug/LabelDebug/LabelDebug.tscn" id="2_22u08"]
-[ext_resource type="PackedScene" uid="uid://cithgfwbjq7h0" path="res://Lib/NodeVida/vida.tscn" id="3_1d6qe"]
+[ext_resource type="Script" uid="uid://boe02ov71oi2f" path="res://lib/NPC/Npc.cs" id="1_0bmxt"]
+[ext_resource type="PackedScene" uid="uid://bg2fme15ft8id" path="res://debug/scenes/label_debug.tscn" id="2_22u08"]
+[ext_resource type="PackedScene" uid="uid://cithgfwbjq7h0" path="res://lib/NodeVida/vida.tscn" id="3_1d6qe"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0bmxt"]
 load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"

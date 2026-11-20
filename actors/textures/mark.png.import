@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmtkvvrbidkt6"
-path="res://.godot/imported/BaseStoneFG_TileMap 64x64.png-ce650629eaf8ace741ce8c21c8e24610.ctex"
+uid="uid://dv8a4qmy7rwml"
+path="res://.godot/imported/mark.png-e9c72a7311e967426747bc2b97b77f3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/BaseStoneFG_TileMap 64x64.png"
-dest_files=["res://.godot/imported/BaseStoneFG_TileMap 64x64.png-ce650629eaf8ace741ce8c21c8e24610.ctex"]
+source_file="res://actors/textures/mark.png"
+dest_files=["res://.godot/imported/mark.png-e9c72a7311e967426747bc2b97b77f3f.ctex"]
 
 [params]
 

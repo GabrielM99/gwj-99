@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cahdspen7cv53"]
 
-[ext_resource type="Script" uid="uid://rbtgg7hdh4e5" path="res://DualGridTilemap.cs" id="1_f3sb7"]
-[ext_resource type="TileSet" uid="uid://c1ddrhocyu77u" path="res://tileset.tres" id="2_nsmjb"]
-[ext_resource type="Script" uid="uid://0yun61nfxld3" path="res://Tile.cs" id="2_w2evn"]
-[ext_resource type="Resource" uid="uid://c47lwve17rtls" path="res://rock_bg_tile.tres" id="3_ape6d"]
-[ext_resource type="Resource" uid="uid://caeidobmak7wc" path="res://rock_fg_tile.tres" id="4_qdsee"]
+[ext_resource type="Script" uid="uid://rbtgg7hdh4e5" path="res://tiles/scripts/DualGridTilemap.cs" id="1_f3sb7"]
+[ext_resource type="TileSet" uid="uid://c1ddrhocyu77u" path="res://tiles/resources/tileset.tres" id="2_nsmjb"]
+[ext_resource type="Script" uid="uid://0yun61nfxld3" path="res://tiles/scripts/Tile.cs" id="2_w2evn"]
+[ext_resource type="Resource" uid="uid://c47lwve17rtls" path="res://tiles/resources/rock_bg_tile.tres" id="3_ape6d"]
+[ext_resource type="Resource" uid="uid://caeidobmak7wc" path="res://tiles/resources/rock_fg_tile.tres" id="4_qdsee"]
 
 [node name="Tilemap" type="Node2D" unique_id=1398780299 node_paths=PackedStringArray("WorldMapLayer", "DisplayMapLayer")]
 script = ExtResource("1_f3sb7")

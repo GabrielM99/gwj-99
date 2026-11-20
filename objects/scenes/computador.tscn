@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bymbbtapvysry"]
 
-[ext_resource type="PackedScene" uid="uid://bg2fme15ft8id" path="res://Debug/LabelDebug/LabelDebug.tscn" id="1_6s381"]
-[ext_resource type="Script" uid="uid://b4w37pv1a7jmk" path="res://Debug/Computador.cs" id="1_jvttq"]
+[ext_resource type="PackedScene" uid="uid://bg2fme15ft8id" path="res://debug/scenes/label_debug.tscn" id="1_6s381"]
+[ext_resource type="Script" uid="uid://b4w37pv1a7jmk" path="res://objects/scripts/Computador.cs" id="1_jvttq"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ty43j"]
 load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"

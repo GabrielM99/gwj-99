@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cr1svd7xjyu7o"]
 
-[ext_resource type="Script" uid="uid://c2tgcfe8dv5sb" path="res://Lib/Projetil/Projetil.cs" id="1_8pve8"]
+[ext_resource type="Script" uid="uid://c2tgcfe8dv5sb" path="res://lib/Projetil/Projetil.cs" id="1_8pve8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lgns8"]
 

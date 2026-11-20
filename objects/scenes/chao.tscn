@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://vbufgqedt52t"]
 
-[ext_resource type="Texture2D" uid="uid://7ku41dsb3s1e" path="res://icon.svg" id="1_dubep"]
-[ext_resource type="Script" uid="uid://bw2wv2os4j7s5" path="res://Debug/Chao.cs" id="1_xlnln"]
-[ext_resource type="PackedScene" uid="uid://bg2fme15ft8id" path="res://Debug/LabelDebug/LabelDebug.tscn" id="3_2ftbl"]
+[ext_resource type="Texture2D" uid="uid://7ku41dsb3s1e" path="res://debug/textures/icon.svg" id="1_dubep"]
+[ext_resource type="Script" uid="uid://bw2wv2os4j7s5" path="res://objects/scripts/Chao.cs" id="1_xlnln"]
+[ext_resource type="PackedScene" uid="uid://bg2fme15ft8id" path="res://debug/scenes/label_debug.tscn" id="3_2ftbl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgns8"]
 size = Vector2(127.21473, 120)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c2xaes3oukuv6"]
 
-[ext_resource type="Script" uid="uid://dvfo7cxccwax5" path="res://Lib/InputManager/SingletonInputManager.cs" id="1_yhaew"]
+[ext_resource type="Script" uid="uid://dvfo7cxccwax5" path="res://lib/InputManager/SingletonInputManager.cs" id="1_yhaew"]
 
 [node name="SingletonInputManager" type="Node" unique_id=1290743810]
 script = ExtResource("1_yhaew")

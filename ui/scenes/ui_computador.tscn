@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cy4oj3cy15wp8"]
 
-[ext_resource type="Script" uid="uid://tkr3n32p461u" path="res://Debug/UiComputador.cs" id="1_n5grf"]
+[ext_resource type="Script" uid="uid://tkr3n32p461u" path="res://ui/scripts/UiComputador.cs" id="1_n5grf"]
 
 [node name="UIComputador" type="CanvasLayer" unique_id=713065711 node_paths=PackedStringArray("ButtonClose", "ContainerHorizontal")]
 script = ExtResource("1_n5grf")

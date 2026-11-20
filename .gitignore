@@ -25,5 +25,3 @@ mono_crash.*.json
 # *.pck
 .vscode/launch.json
 .vscode/tasks.json
-
-addons/

@@ -17,7 +17,6 @@ public partial class WorldGenerator : Node2D
 
         GD.Print("Gerando mundo...");
 
-
         for (int x = -halfSize; x <= halfSize; x++)
         {
             for (int y = -halfSize; y <= halfSize; y++)

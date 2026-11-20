@@ -4,12 +4,23 @@
 [ext_resource type="Script" uid="uid://u3gvu1l21yg0" path="res://actors/scripts/RobotAI.cs" id="2_5x8se"]
 [ext_resource type="Script" uid="uid://tq88o7ipjsy5" path="res://actors/scripts/Pathfinder.cs" id="3_lalgu"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lalgu"]
+size = Vector2(16, 16)
+
 [node name="Robot" unique_id=244378393 instance=ExtResource("1_h2s5a")]
+Acceleration = 2000.0
+Deceleration = 2000.0
 Type = 1
+
+[node name="Sprite2D" parent="." index="0" unique_id=322924745]
+scale = Vector2(0.1, 0.1)
 
 [node name="Health" parent="." index="2" unique_id=231730683]
 VidaMaxima = 100.0
 VidaAtual = 0.0
+
+[node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(806309445) index="0" unique_id=1453637491]
+shape = SubResource("RectangleShape2D_lalgu")
 
 [node name="AI" type="Node" parent="." index="4" unique_id=1687256844 node_paths=PackedStringArray("NPC", "Pathfinder")]
 script = ExtResource("2_5x8se")

@@ -7,7 +7,7 @@ public partial class RobotAI : Node
 
 	public override void _Ready()
 	{
-		Vector2 randomPosition = new(195.0f, -121.0f);
+		Vector2 randomPosition = new(395.0f, -121.0f);
 		Pathfinder.SetTargetPosition(randomPosition);
 	}
 

@@ -25,13 +25,11 @@ Robot = NodePath("Robot")
 
 [node name="Generator" type="Node2D" parent="." unique_id=1473644539 node_paths=PackedStringArray("World")]
 script = ExtResource("1_fhsbw")
-Enabled = false
 World = NodePath("..")
 RockFGTile = ExtResource("2_le2xu")
 RockBGTile = ExtResource("3_wqfff")
 Size = 128
-CoreSize = 12
-Noise = 0.85
+Noise = 0.8
 
 [node name="PathfindGrid" type="Node" parent="." unique_id=1766325635 node_paths=PackedStringArray("Tilemap")]
 script = ExtResource("4_wqfff")
@@ -81,4 +79,4 @@ position = Vector2(86, 0)
 position = Vector2(0, -15)
 
 [node name="Robot" parent="." unique_id=244378393 instance=ExtResource("11_le2xu")]
-position = Vector2(-195, -121)
+position = Vector2(-204.135, -155.805)

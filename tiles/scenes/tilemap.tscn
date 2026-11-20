@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cahdspen7cv53"]
+[gd_scene format=4 uid="uid://cahdspen7cv53"]
 
 [ext_resource type="Script" uid="uid://rbtgg7hdh4e5" path="res://tiles/scripts/DualGridTilemap.cs" id="1_f3sb7"]
 [ext_resource type="TileSet" uid="uid://c1ddrhocyu77u" path="res://tiles/resources/tileset.tres" id="2_nsmjb"]
@@ -13,9 +13,11 @@ DisplayMapLayer = NodePath("Display")
 Tiles = Array[ExtResource("2_w2evn")]([ExtResource("3_ape6d"), ExtResource("4_qdsee")])
 
 [node name="World" type="TileMapLayer" parent="." unique_id=1318111512]
-visible = false
+tile_map_data = PackedByteArray("AAD/////AgACAAEAAAD///7/AgACAAEAAAD///3/AgACAAEAAAD///z/AgACAAEAAAD///v/AgACAAEAAAD///r/AgACAAEAAAD///n/AgACAAEAAAD///j/AgACAAEAAAD///f/AgACAAEAAAA=")
 tile_set = ExtResource("2_nsmjb")
 
 [node name="Display" type="TileMapLayer" parent="." unique_id=1137562697]
 position = Vector2(-8, -8)
 tile_set = ExtResource("2_nsmjb")
+collision_enabled = false
+navigation_enabled = false

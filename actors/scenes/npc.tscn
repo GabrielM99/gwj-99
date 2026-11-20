@@ -10,8 +10,9 @@ load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.cte
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgns8"]
 size = Vector2(23, 24)
 
-[node name="NPC" type="Node2D" unique_id=244378393]
+[node name="NPC" type="Node2D" unique_id=244378393 node_paths=PackedStringArray("vida")]
 script = ExtResource("1_4pgvx")
+vida = NodePath("Health")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=322924745]
 scale = Vector2(0.2, 0.2)
@@ -24,7 +25,7 @@ offset_right = 11.0
 offset_bottom = -10.0
 text = "npc"
 
-[node name="Vida" parent="." unique_id=231730683 instance=ExtResource("3_3111c")]
+[node name="Health" parent="." unique_id=231730683 instance=ExtResource("3_3111c")]
 
 [node name="Area2D" type="Area2D" parent="." unique_id=806309445]
 

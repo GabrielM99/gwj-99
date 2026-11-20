@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bymbbtapvysry" path="res://objects/scenes/computador.tscn" id="8_wse8f"]
 [ext_resource type="PackedScene" uid="uid://cy4oj3cy15wp8" path="res://ui/scenes/ui_computador.tscn" id="9_ic0uy"]
 [ext_resource type="PackedScene" uid="uid://cfd11yy3gh8es" path="res://objects/scenes/escada.tscn" id="10_k3n1d"]
+[ext_resource type="PackedScene" uid="uid://dwpxa7dsj1wug" path="res://actors/scenes/robot.tscn" id="11_le2xu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbfbk"]
 size = Vector2(127.21473, 128)
@@ -67,3 +68,6 @@ position = Vector2(86, 0)
 
 [node name="Player" parent="Spaceship" unique_id=2063339062 instance=ExtResource("6_dwbse")]
 position = Vector2(0, -15)
+
+[node name="Robot" parent="." unique_id=244378393 instance=ExtResource("11_le2xu")]
+position = Vector2(-195, -121)

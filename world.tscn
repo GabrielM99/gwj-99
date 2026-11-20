@@ -5,16 +5,64 @@
 [ext_resource type="PackedScene" uid="uid://cahdspen7cv53" path="res://tilemap.tscn" id="2_fj7yv"]
 [ext_resource type="Resource" uid="uid://c47lwve17rtls" path="res://rock_bg_tile.tres" id="3_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://bsayca18x8uyr" path="res://camera.tscn" id="5_036b0"]
+[ext_resource type="PackedScene" uid="uid://b060dhmgyfobk" path="res://Lib/Player/player.tscn" id="6_dwbse"]
+[ext_resource type="Texture2D" uid="uid://7ku41dsb3s1e" path="res://icon.svg" id="7_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://bymbbtapvysry" path="res://Debug/computador.tscn" id="8_wse8f"]
+[ext_resource type="PackedScene" uid="uid://cy4oj3cy15wp8" path="res://Debug/ui_computador.tscn" id="9_ic0uy"]
+[ext_resource type="PackedScene" uid="uid://cfd11yy3gh8es" path="res://Debug/escada.tscn" id="10_k3n1d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbfbk"]
+size = Vector2(127.21473, 128)
 
 [node name="World" type="Node2D" unique_id=760113448]
 
-[node name="WorldGenerator" type="Node" parent="." unique_id=1910229712 node_paths=PackedStringArray("Tilemap")]
+[node name="WorldGenerator" type="Node2D" parent="." unique_id=2078916199 node_paths=PackedStringArray("Tilemap")]
 script = ExtResource("1_f3sb7")
 Tilemap = NodePath("../Tilemap")
-Size = 40
 RockFGTile = ExtResource("2_dwbse")
 RockBGTile = ExtResource("3_pkg7o")
+Size = 128
+CoreSize = 12
 
 [node name="Tilemap" parent="." unique_id=1398780299 instance=ExtResource("2_fj7yv")]
 
 [node name="Camera" parent="." unique_id=665312177 instance=ExtResource("5_036b0")]
+zoom = Vector2(0.75, 0.75)
+
+[node name="Spaceship" type="Node2D" parent="." unique_id=826974502]
+
+[node name="Floor" type="Sprite2D" parent="Spaceship" unique_id=716023449]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(3, 34)
+scale = Vector2(2.1874998, 0.15625)
+texture = ExtResource("7_pkg7o")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Spaceship/Floor" unique_id=723165738]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spaceship/Floor/StaticBody2D" unique_id=1998433798]
+scale = Vector2(0.9999999, 1)
+shape = SubResource("RectangleShape2D_gbfbk")
+
+[node name="Floor2" type="Sprite2D" parent="Spaceship" unique_id=1969309575]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(167, -15.999999)
+scale = Vector2(1.1640624, 0.15625)
+texture = ExtResource("7_pkg7o")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Spaceship/Floor2" unique_id=522598727]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spaceship/Floor2/StaticBody2D" unique_id=831706858]
+scale = Vector2(0.9999999, 1)
+shape = SubResource("RectangleShape2D_gbfbk")
+
+[node name="Computador" parent="Spaceship" unique_id=1510360596 instance=ExtResource("8_wse8f")]
+position = Vector2(-81, 5)
+
+[node name="UIComputador" parent="Spaceship" unique_id=713065711 instance=ExtResource("9_ic0uy")]
+visible = false
+
+[node name="escada" parent="Spaceship" unique_id=1873721393 instance=ExtResource("10_k3n1d")]
+position = Vector2(86, 0)
+
+[node name="Player" parent="Spaceship" unique_id=2063339062 instance=ExtResource("6_dwbse")]
+position = Vector2(0, -15)

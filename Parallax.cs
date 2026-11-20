@@ -4,7 +4,7 @@ using Godot;
 public partial class Parallax : Node2D
 {
 	[Export] public Sprite2D Sprite { get; private set; }
-	[Export] public Camera2D Camera {get; private set;}
+	[Export] public Camera2D Camera { get; private set; }
 	[Export] public float Speed { get; private set; } = 1f;
 
 	public override void _Process(double delta)
@@ -16,10 +16,5 @@ public partial class Parallax : Node2D
 
 		Sprite.RegionRect = spriteRect;
 		Sprite.Scale = new Vector2(1f / Camera.Zoom.X, 1f / Camera.Zoom.Y);
-
-		Camera.Position = Vector2.Up * (float)Math.Sin(f) * 10;
-		f += delta;
 	}
-
-	double f;
 }

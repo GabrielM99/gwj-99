@@ -1,11 +1,12 @@
 using Godot;
 
-public partial class WorldGenerator : Node
+public partial class WorldGenerator : Node2D
 {
     [Export] public DualGridTilemap Tilemap { get; private set; }
-    [Export] public int Size { get; private set; } = 64;
-    [Export] public Tile RockFGTile { get; private set; }
-    [Export] public Tile RockBGTile { get; private set; }
+    [Export] public Tile RockFGTile { get; set; }
+    [Export] public Tile RockBGTile { get; set; }
+    [Export] public int Size { get; set; } = 64;
+    [Export] public int CoreSize { get; set; } = 3;
 
     public override void _Ready()
     {
@@ -15,6 +16,7 @@ public partial class WorldGenerator : Node
 
         GD.Print("Gerando mundo...");
 
+
         for (int x = -halfSize; x <= halfSize; x++)
         {
             for (int y = -halfSize; y <= halfSize; y++)
@@ -23,7 +25,7 @@ public partial class WorldGenerator : Node
 
                 float distance = position.DistanceTo(Vector2I.Zero);
 
-                if (distance > 3 && distance <= halfSize)
+                if (distance > CoreSize && distance <= halfSize)
                 {
                     Tilemap.SetTile(position, RockFGTile, 1);
 

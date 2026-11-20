@@ -14,11 +14,11 @@ public partial class DualGridTilemap : Node2D
 
     [Export] public TileMapLayer WorldMapLayer { get; set; }
     [Export] public TileMapLayer DisplayMapLayer { get; set; }
+    [Export] public Godot.Collections.Array<Tile> Tiles { get; set; } = [];
 
     private readonly Dictionary<int, HashSet<Vector2I>> _dirtyTiles = [];
 
     private readonly List<TileMapLayer> _worldLayers = [];
-    private readonly Godot.Collections.Array<Tile> _tiles = [];
     private readonly Dictionary<(int Z, int SourceID), TileMapLayer> _displayLayers = [];
     private readonly Dictionary<int, Tile> _tilesBySourceID = [];
 
@@ -57,7 +57,14 @@ public partial class DualGridTilemap : Node2D
             _worldLayers.Add(WorldMapLayer);
         }
 
-        // Inicializa o display a partir dos tiles existentes.
+        foreach (Tile tile in Tiles)
+        {
+            if (tile != null)
+            {
+                _tilesBySourceID[tile.SourceID] = tile;
+            }
+        }
+
         foreach (Vector2I cellPos in WorldMapLayer.GetUsedCells())
         {
             MarkTileDirty(cellPos, 0);
@@ -127,6 +134,16 @@ public partial class DualGridTilemap : Node2D
         MarkTileDirty(coords, z);
     }
 
+    public bool HasTile(Vector2I coords, int z = 0)
+    {
+        if (z < 0 || z >= _worldLayers.Count)
+        {
+            return false;
+        }
+
+        return _worldLayers[z].GetCellSourceId(coords) != -1;
+    }
+
     private TileMapLayer EnsureWorldLayer(int z)
     {
         while (_worldLayers.Count <= z)
@@ -145,7 +162,7 @@ public partial class DualGridTilemap : Node2D
             }
 
             layer.Clear();
-            layer.ZIndex = currentZ * 100;
+            layer.ZIndex = currentZ;
 
             _worldLayers.Add(layer);
         }
@@ -174,7 +191,7 @@ public partial class DualGridTilemap : Node2D
         }
 
         layer.Clear();
-        layer.ZIndex = z * 100 + tile.SortingOrder;
+        layer.ZIndex = z;
 
         _displayLayers.Add(key, layer);
 
@@ -235,14 +252,12 @@ public partial class DualGridTilemap : Node2D
 
             foreach (Tile tile in _tilesBySourceID.Values)
             {
-                Vector2I atlasCoords = CalculateDisplayTileAtlasCoords(
-                    worldLayer,
-                    displayPos,
-                    tile
-                );
+                Vector2I atlasCoords = CalculateDisplayTileAtlasCoords(worldLayer, displayPos, tile);
 
                 if (atlasCoords == -Vector2I.One)
+                {
                     continue;
+                }
 
                 TileMapLayer displayLayer = EnsureDisplayLayer(z, tile);
                 displayLayer.SetCell(displayPos, tile.SourceID, atlasCoords);

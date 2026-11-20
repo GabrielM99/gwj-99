@@ -17,13 +17,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbfbk"]
 size = Vector2(127.21473, 128)
 
-[node name="World" type="Node2D" unique_id=760113448 node_paths=PackedStringArray("Tilemap", "PathfindGrid")]
+[node name="World" type="Node2D" unique_id=760113448 node_paths=PackedStringArray("Tilemap", "PathfindGrid", "Robot")]
 script = ExtResource("1_dfa8h")
 Tilemap = NodePath("Tilemap")
 PathfindGrid = NodePath("PathfindGrid")
+Robot = NodePath("Robot")
 
 [node name="Generator" type="Node2D" parent="." unique_id=1473644539 node_paths=PackedStringArray("World")]
 script = ExtResource("1_fhsbw")
+Enabled = false
 World = NodePath("..")
 RockFGTile = ExtResource("2_le2xu")
 RockBGTile = ExtResource("3_wqfff")

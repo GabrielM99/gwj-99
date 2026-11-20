@@ -1,6 +1,21 @@
 [gd_scene format=3 uid="uid://dwpxa7dsj1wug"]
 
 [ext_resource type="PackedScene" uid="uid://o0bwd4afks62" path="res://actors/scenes/npc.tscn" id="1_h2s5a"]
+[ext_resource type="Script" uid="uid://u3gvu1l21yg0" path="res://actors/scripts/RobotAI.cs" id="2_5x8se"]
+[ext_resource type="Script" uid="uid://tq88o7ipjsy5" path="res://actors/scripts/Pathfinder.cs" id="3_lalgu"]
 
 [node name="Robot" unique_id=244378393 instance=ExtResource("1_h2s5a")]
-TipoNpc = 1
+Type = 1
+
+[node name="Health" parent="." index="2" unique_id=231730683]
+VidaMaxima = 100.0
+VidaAtual = 0.0
+
+[node name="AI" type="Node" parent="." index="4" unique_id=1687256844 node_paths=PackedStringArray("NPC", "Pathfinder")]
+script = ExtResource("2_5x8se")
+NPC = NodePath("..")
+Pathfinder = NodePath("../Pathfinder")
+
+[node name="Pathfinder" type="Node" parent="." index="5" unique_id=2050414153 node_paths=PackedStringArray("NPC")]
+script = ExtResource("3_lalgu")
+NPC = NodePath("..")

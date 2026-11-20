@@ -2,6 +2,7 @@ using Godot;
 
 public partial class WorldGenerator : Node2D
 {
+    [Export] public bool Enabled { get; private set; } = true;
     [Export] public World World { get; private set; }
     [Export] public Tile RockFGTile { get; set; }
     [Export] public Tile RockBGTile { get; set; }
@@ -12,6 +13,11 @@ public partial class WorldGenerator : Node2D
     public override void _Ready()
     {
         base._Ready();
+
+        if (!Enabled)
+        {
+            return;
+        }
 
         int halfSize = Size / 2;
 

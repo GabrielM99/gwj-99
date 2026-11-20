@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cfd11yy3gh8es"]
+
+[ext_resource type="Script" uid="uid://bvfcui2xjlfk8" path="res://objects/scripts/Ladder.cs" id="1_nvn32"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgns8"]
+size = Vector2(16, 16)
+
+[node name="Ladder" type="Node2D" unique_id=1873721393 node_paths=PackedStringArray("AreaDeteccao")]
+script = ExtResource("1_nvn32")
+AreaDeteccao = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=120561707]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1246638198]
+shape = SubResource("RectangleShape2D_lgns8")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://tkr3n32p461u" path="res://ui/scripts/UiComputador.cs" id="1_n5grf"]
 
-[node name="UIComputador" type="CanvasLayer" unique_id=713065711 node_paths=PackedStringArray("ButtonClose", "ContainerHorizontal")]
+[node name="ComputerUI" type="CanvasLayer" unique_id=713065711 node_paths=PackedStringArray("ButtonClose", "ContainerHorizontal")]
 script = ExtResource("1_n5grf")
 ButtonClose = NodePath("PanelContainer/VBoxContainer/HBoxContainer/ButtonClose")
 ContainerHorizontal = NodePath("PanelContainer/VBoxContainer")

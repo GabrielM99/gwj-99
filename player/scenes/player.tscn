@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://b060dhmgyfobk"]
 
 [ext_resource type="Script" uid="uid://cyfvsllg7dwp0" path="res://player/scripts/Player.cs" id="1_a37b6"]
-[ext_resource type="PackedScene" uid="uid://bg2fme15ft8id" path="res://debug/scenes/label_debug.tscn" id="3_21xjf"]
 [ext_resource type="Texture2D" uid="uid://dv8a4qmy7rwml" path="res://player/textures/mark.png" id="5_j7q8a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgns8"]
@@ -119,13 +118,6 @@ sprite = NodePath("AnimatedSprite2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1152120286]
 position = Vector2(0.5, 2.5)
 shape = SubResource("RectangleShape2D_lgns8")
-
-[node name="LabelDebug" parent="." unique_id=1068818271 instance=ExtResource("3_21xjf")]
-offset_left = -18.0
-offset_top = -23.0
-offset_right = 23.0
-offset_bottom = -6.0
-text = "jogador"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1934264336]
 sprite_frames = SubResource("SpriteFrames_lgns8")

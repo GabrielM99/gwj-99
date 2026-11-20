@@ -1,15 +1,14 @@
 [gd_scene format=3 uid="uid://bymbbtapvysry"]
 
-[ext_resource type="PackedScene" uid="uid://bg2fme15ft8id" path="res://debug/scenes/label_debug.tscn" id="1_6s381"]
 [ext_resource type="Script" uid="uid://b4w37pv1a7jmk" path="res://objects/scripts/Computer.cs" id="1_jvttq"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ty43j"]
 load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgns8"]
-size = Vector2(97, 38)
+size = Vector2(32, 32)
 
-[node name="Computador" type="Node2D" unique_id=1510360596 node_paths=PackedStringArray("areaDeteccao")]
+[node name="Computer" type="Node2D" unique_id=1510360596 node_paths=PackedStringArray("areaDeteccao")]
 script = ExtResource("1_jvttq")
 TipoComputador = 1
 areaDeteccao = NodePath("Area2D")
@@ -24,10 +23,3 @@ texture = SubResource("CompressedTexture2D_ty43j")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=958906232]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_lgns8")
-
-[node name="LabelDebug" parent="." unique_id=1068818271 instance=ExtResource("1_6s381")]
-offset_left = -31.0
-offset_top = -36.0
-offset_right = 35.0
-offset_bottom = -20.0
-text = "computador"

@@ -13,6 +13,7 @@ DisplayMapLayer = NodePath("Display")
 Tiles = Array[ExtResource("2_w2evn")]([ExtResource("3_ape6d"), ExtResource("4_qdsee")])
 
 [node name="World" type="TileMapLayer" parent="." unique_id=1318111512]
+visible = false
 tile_map_data = PackedByteArray("AAD/////AgACAAEAAAD///7/AgACAAEAAAD///3/AgACAAEAAAD///z/AgACAAEAAAD///v/AgACAAEAAAD///r/AgACAAEAAAD///n/AgACAAEAAAD///j/AgACAAEAAAD///f/AgACAAEAAAA=")
 tile_set = ExtResource("2_nsmjb")
 

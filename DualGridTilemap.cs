@@ -130,20 +130,17 @@ public partial class DualGridTilemap : Node2D
             return tiles;
         }
 
-        TileMapLayer worldLayer = _worldLayers[z];
-
-        foreach (Vector2I coords in worldLayer.GetUsedCells())
+        for (int x = area.Position.X; x < area.End.X; x++)
         {
-            if (!area.HasPoint(coords))
+            for (int y = area.Position.Y; y < area.End.Y; y++)
             {
-                continue;
-            }
+                Vector2I coords = new(x, y);
+                Tile tile = GetTile(coords, z);
 
-            Tile tile = GetTile(coords, z);
-
-            if (tile != null)
-            {
-                tiles.Add(new TileInfo(tile, coords));
+                if (tile != null)
+                {
+                    tiles.Add(new TileInfo(tile, coords));
+                }
             }
         }
 
@@ -159,21 +156,25 @@ public partial class DualGridTilemap : Node2D
             return tiles;
         }
 
-        TileMapLayer worldLayer = _worldLayers[z];
         int squaredRadius = radius * radius;
 
-        foreach (Vector2I coords in worldLayer.GetUsedCells())
+        for (int x = center.X - radius; x <= center.X + radius; x++)
         {
-            if (coords.DistanceSquaredTo(center) > squaredRadius)
+            for (int y = center.Y - radius; y <= center.Y + radius; y++)
             {
-                continue;
-            }
+                Vector2I coords = new(x, y);
 
-            Tile tile = GetTile(coords, z);
+                if (coords.DistanceSquaredTo(center) > squaredRadius)
+                {
+                    continue;
+                }
 
-            if (tile != null)
-            {
-                tiles.Add(new TileInfo(tile, coords));
+                Tile tile = GetTile(coords, z);
+
+                if (tile != null)
+                {
+                    tiles.Add(new TileInfo(tile, coords));
+                }
             }
         }
 

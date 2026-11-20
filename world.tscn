@@ -23,6 +23,7 @@ RockFGTile = ExtResource("2_dwbse")
 RockBGTile = ExtResource("3_pkg7o")
 Size = 128
 CoreSize = 12
+Noise = 0.75
 
 [node name="Tilemap" parent="." unique_id=1398780299 instance=ExtResource("2_fj7yv")]
 

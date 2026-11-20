@@ -7,6 +7,7 @@ public partial class WorldGenerator : Node2D
     [Export] public Tile RockBGTile { get; set; }
     [Export] public int Size { get; set; } = 64;
     [Export] public int CoreSize { get; set; } = 3;
+    [Export(PropertyHint.Range, "0, 1")] public float Noise { get; set; } = 0f;
 
     public override void _Ready()
     {
@@ -21,6 +22,11 @@ public partial class WorldGenerator : Node2D
         {
             for (int y = -halfSize; y <= halfSize; y++)
             {
+                if (GD.Randf() <= Noise)
+                {
+                    continue;
+                }
+
                 Vector2I position = new(x, y);
 
                 float distance = position.DistanceTo(Vector2I.Zero);

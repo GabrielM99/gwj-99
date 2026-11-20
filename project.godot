@@ -19,6 +19,7 @@ config/icon="res://debug/textures/icon.svg"
 
 SingletonInputManager="*uid://c2xaes3oukuv6"
 GlobalEventBus="*uid://djj57rds6kcj5"
+_mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
 
 [display]
 
@@ -32,6 +33,10 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="gwj-99"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_ai/plugin.cfg")
 
 [input]
 

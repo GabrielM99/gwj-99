@@ -4,7 +4,7 @@ using Godot;
 public partial class Parallax : Node2D
 {
 	[Export] public Sprite2D Sprite { get; private set; }
-	[Export] public Camera2D Camera { get; private set; }
+	[Export] public Godot.Camera2D Camera { get; private set; }
 	[Export] public float Speed { get; private set; } = 1f;
 
 	public override void _Process(double delta)

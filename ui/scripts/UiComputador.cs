@@ -24,7 +24,7 @@ public partial class UiComputador : CanvasLayer
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
-        SingletonInputManager.Instance.ShowUIComputer += Open;
+        InputManager.Instance.ShowUIComputer += Open;
         ButtonClose.Pressed += Close;
     }
 
@@ -33,7 +33,7 @@ public partial class UiComputador : CanvasLayer
 	{
 	}
     
-    private void Open(TipoComputadorEnum TipoComputadorParaAbrir){
+    private void Open(ComputerType TipoComputadorParaAbrir){
         if (!_uiAberta){
             labelPlaceholder.Text = "placeholder " + TipoComputadorParaAbrir.ToString();
             ContainerHorizontal.AddChild(labelPlaceholder);

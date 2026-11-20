@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cithgfwbjq7h0"]
+
+[ext_resource type="Script" uid="uid://52gu8aow5s64" path="res://shared/health/Health.cs" id="1_lgu46"]
+
+[node name="Health" type="Node" unique_id=231730683]
+script = ExtResource("1_lgu46")
+VidaMaxima = null
+VidaAtual = null

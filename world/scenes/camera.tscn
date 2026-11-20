@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bsayca18x8uyr"]
 
 [ext_resource type="Texture2D" uid="uid://cq68hlbpcwoo1" path="res://world/textures/background.png" id="1_diie0"]
-[ext_resource type="Script" uid="uid://dfk2pgxvsbqpa" path="res://lib/Camera/Camera2d.cs" id="1_qqjab"]
+[ext_resource type="Script" uid="uid://dfk2pgxvsbqpa" path="res://world/scripts/Camera2D.cs" id="1_qqjab"]
 [ext_resource type="Script" uid="uid://bquqhvww1huu6" path="res://world/scripts/Parallax.cs" id="2_qqjab"]
 
 [node name="Camera2D" type="Camera2D" unique_id=665312177]

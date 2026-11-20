@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cco67djofa2tf"]
 
-[ext_resource type="PackedScene" uid="uid://b060dhmgyfobk" path="res://lib/Player/player.tscn" id="2_3uyst"]
+[ext_resource type="PackedScene" uid="uid://b060dhmgyfobk" path="res://player/scenes/player.tscn" id="2_3uyst"]
 [ext_resource type="PackedScene" uid="uid://cfd11yy3gh8es" path="res://objects/scenes/escada.tscn" id="3_4nspm"]
 [ext_resource type="PackedScene" uid="uid://vbufgqedt52t" path="res://objects/scenes/chao.tscn" id="3_61nan"]
 [ext_resource type="PackedScene" uid="uid://bymbbtapvysry" path="res://objects/scenes/computador.tscn" id="4_61nan"]
 [ext_resource type="PackedScene" uid="uid://cy4oj3cy15wp8" path="res://ui/scenes/ui_computador.tscn" id="5_2shxo"]
-[ext_resource type="PackedScene" uid="uid://cadlmkr7y8ivk" path="res://lib/Torre/torre.tscn" id="6_vacks"]
+[ext_resource type="PackedScene" uid="uid://cadlmkr7y8ivk" path="res://actors/scenes/tower.tscn" id="6_vacks"]
 
 [node name="Debug" type="Node2D" unique_id=1897988714]
 

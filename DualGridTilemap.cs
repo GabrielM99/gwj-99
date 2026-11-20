@@ -107,6 +107,79 @@ public partial class DualGridTilemap : Node2D
         return EnsureWorldLayer(z).LocalToMap(position);
     }
 
+    public Tile GetTile(Vector2I coords, int z = 0)
+    {
+        if (z < 0 || z >= _worldLayers.Count)
+        {
+            return null;
+        }
+
+        int sourceID = _worldLayers[z].GetCellSourceId(coords);
+
+        return _tilesBySourceID.TryGetValue(sourceID, out Tile tile)
+            ? tile
+            : null;
+    }
+
+    public List<TileInfo> GetTiles(Rect2I area, int z = 0)
+    {
+        List<TileInfo> tiles = [];
+
+        if (z < 0 || z >= _worldLayers.Count)
+        {
+            return tiles;
+        }
+
+        TileMapLayer worldLayer = _worldLayers[z];
+
+        foreach (Vector2I coords in worldLayer.GetUsedCells())
+        {
+            if (!area.HasPoint(coords))
+            {
+                continue;
+            }
+
+            Tile tile = GetTile(coords, z);
+
+            if (tile != null)
+            {
+                tiles.Add(new TileInfo(tile, coords));
+            }
+        }
+
+        return tiles;
+    }
+
+    public List<TileInfo> GetTiles(Vector2I center, int radius, int z = 0)
+    {
+        List<TileInfo> tiles = [];
+
+        if (z < 0 || z >= _worldLayers.Count || radius < 0)
+        {
+            return tiles;
+        }
+
+        TileMapLayer worldLayer = _worldLayers[z];
+        int squaredRadius = radius * radius;
+
+        foreach (Vector2I coords in worldLayer.GetUsedCells())
+        {
+            if (coords.DistanceSquaredTo(center) > squaredRadius)
+            {
+                continue;
+            }
+
+            Tile tile = GetTile(coords, z);
+
+            if (tile != null)
+            {
+                tiles.Add(new TileInfo(tile, coords));
+            }
+        }
+
+        return tiles;
+    }
+
     public void SetTile(Vector2I coords, Tile tile, int z = 0)
     {
         if (z < 0)

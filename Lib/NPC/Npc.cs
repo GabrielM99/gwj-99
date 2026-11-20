@@ -28,12 +28,12 @@ public partial class Npc : Node2D
     private float _currentSpeed = 0f;
 
     [Export]
-    private Vida _vida;
+    public Vida vida { get; set; }
 
     public override void _Ready()
     {
-        if (_vida != null){
-            _vida.Morte += Morreu;
+        if (vida != null){
+            vida.Morte += Morreu;
         }
     }
 

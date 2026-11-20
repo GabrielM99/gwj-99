@@ -6,6 +6,14 @@ public partial class Torre : Node2D
 
     [Export]
     public Area2D RangeDeteccao;
+
+    /// <summary>
+    /// A torre pode passar o dano do projetil
+    /// </summary>
+    [Export]
+    public int dano = 1;
+
+    private static readonly PackedScene Projetil = GD.Load<PackedScene>("res://projetil/projetil.tscn");
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -17,9 +25,16 @@ public partial class Torre : Node2D
 	{
 	}
 
+    /// <summary>
+    /// A area detectada aqui é o inimigo alvo
+    /// </summary>
+    /// <param name="area"></param>
 	private void InimigoDetectado(Node2D area){
 		if (area.GetParent() is Npc npc && npc.TipoNpc == TipoNpcEnum.inimigo){
-            GD.Print("ataca");
+            var projetilInstancia = Projetil.Instantiate() as Projetil;
+            projetilInstancia.Dano = dano;
+            GetTree().CurrentScene.AddChild(projetilInstancia);
+            projetilInstancia.GlobalPosition = this.GlobalPosition; //instanciado da mesma posicao que a torre
         }
 	}
 }

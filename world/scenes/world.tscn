@@ -16,7 +16,7 @@ size = Vector2(127.21473, 128)
 
 [node name="World" type="Node2D" unique_id=760113448]
 
-[node name="Node" type="Node2D" parent="." unique_id=1473644539 node_paths=PackedStringArray("Tilemap")]
+[node name="WorldGenerator" type="Node2D" parent="." unique_id=1473644539 node_paths=PackedStringArray("Tilemap")]
 script = ExtResource("1_fhsbw")
 Tilemap = NodePath("../Tilemap")
 RockFGTile = ExtResource("2_le2xu")

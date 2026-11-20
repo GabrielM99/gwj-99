@@ -35,6 +35,30 @@ region = Rect2(160, 64, 32, 64)
 atlas = ExtResource("5_j7q8a")
 region = Rect2(192, 64, 32, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_21xjf"]
+atlas = ExtResource("5_j7q8a")
+region = Rect2(0, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bky6m"]
+atlas = ExtResource("5_j7q8a")
+region = Rect2(32, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7q8a"]
+atlas = ExtResource("5_j7q8a")
+region = Rect2(64, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh3e3"]
+atlas = ExtResource("5_j7q8a")
+region = Rect2(96, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m55y"]
+atlas = ExtResource("5_j7q8a")
+region = Rect2(128, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnsa0"]
+atlas = ExtResource("5_j7q8a")
+region = Rect2(160, 128, 32, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_lgns8"]
 animations = [{
 "frames": [{
@@ -62,6 +86,29 @@ animations = [{
 "loop": 1,
 "name": &"idle",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21xjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bky6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7q8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh3e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1m55y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnsa0")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 6.0
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=2063339062 node_paths=PackedStringArray("sprite")]
@@ -84,4 +131,4 @@ text = "jogador"
 sprite_frames = SubResource("SpriteFrames_lgns8")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.48720244
+frame_progress = 0.048918657

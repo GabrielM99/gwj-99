@@ -40,11 +40,13 @@ public partial class Player : CharacterBody2D
 		{
 			velocity.X = direction.X * Speed;
 			sprite.FlipH = direction.X < 0;
-		}
+            sprite.Play("walk");
+        }
 		else
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-		}
+            sprite.Play("idle");
+        }
 
 		// Escada
 		OnLadder = CanUseLadder && (OnLadder || direction.Y != 0);

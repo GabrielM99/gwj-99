@@ -107,6 +107,16 @@ public partial class DualGridTilemap : Node2D
         return EnsureWorldLayer(z).LocalToMap(position);
     }
 
+    public Vector2 MapToLocal(Vector2I position, int z = 0)
+    {
+        return EnsureWorldLayer(z).MapToLocal(position);
+    }
+
+    public Vector2 ToGlobal(Vector2 position, int z = 0)
+    {
+        return EnsureWorldLayer(z).ToGlobal(position);
+    }
+
     public Tile GetTile(Vector2I coords, int z = 0)
     {
         if (z < 0 || z >= _worldLayers.Count)

@@ -10,62 +10,65 @@ public partial class NPC : Node2D
     public float MaxSpeed = 200f;
 
     [Export]
-    public float Aceleracao = 400f;
-
-	[Export]
-    public float Desaceleracao = 600f;
+    public float Acceleration = 400f;
 
     [Export]
-	public Vector2 TargetPosition { get; set; } = Vector2.Zero;
+    public float Deceleration = 600f;
+
+    [Export]
+    public Vector2 TargetPosition { get; set; } = Vector2.Zero;
 
     /// <summary>
     /// Deve ser definido por instancia
     /// </summary>
     [Export]
-    public NPCType TipoNpc { get; set; }
+    public NPCType Type { get; set; }
 
     private Vector2 _direction = Vector2.Zero;
     private float _currentSpeed = 0f;
 
     [Export]
-    public Health vida { get; set; }
+    public Health Health { get; set; }
 
     public override void _Ready()
     {
-        if (vida != null){
-            vida.Morte += Morreu;
+        if (Health != null)
+        {
+            Health.Morte += Morreu;
         }
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _PhysicsProcess(double delta)
-	{
-		float dt = (float)delta;
+    {
+        float dt = (float)delta;
 
-        Vector2 Target = TargetPosition - GlobalPosition;
-        float distancia = Target.Length();
+        Vector2 target = TargetPosition - GlobalPosition;
+        float distancia = target.Length();
 
-        if (distancia < 1f){
+        if (distancia < 1f)
+        {
             GlobalPosition = TargetPosition;
             _currentSpeed = 0f;
             return;
         }
 
-		//calcula a velocidade maxima que ele pode continuar andando ate chegar no destino
-        float velocidadeParando = Mathf.Sqrt(2f * Desaceleracao * distancia);
+        //calcula a velocidade maxima que ele pode continuar andando ate chegar no destino
+        float velocidadeParando = Mathf.Sqrt(2f * Deceleration * distancia);
         float velocidade = Mathf.Min(MaxSpeed, velocidadeParando);
 
-		//indica se esta parando ou nao
-        float rate = velocidade < _currentSpeed ? Desaceleracao : Aceleracao;
+        //indica se esta parando ou nao
+        float rate = velocidade < _currentSpeed ? Deceleration : Acceleration;
         _currentSpeed = Mathf.MoveToward(_currentSpeed, velocidade, rate * dt);
 
-		// pra nao andar alem da distancia que falta
+        // pra nao andar alem da distancia que falta
         float step = Mathf.Min(_currentSpeed * dt, distancia);
-        
-		GlobalPosition += Target.Normalized() * step;
+
+        GlobalPosition += target.Normalized() * step;
     }
 
-    private void Morreu(){
+    private void Morreu()
+    {
         QueueFree();
     }
 }

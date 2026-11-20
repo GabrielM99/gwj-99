@@ -2,7 +2,7 @@ using Godot;
 
 public partial class WorldGenerator : Node2D
 {
-    [Export] public DualGridTilemap Tilemap { get; private set; }
+    [Export] public World World { get; private set; }
     [Export] public Tile RockFGTile { get; set; }
     [Export] public Tile RockBGTile { get; set; }
     [Export] public int Size { get; set; } = 64;
@@ -32,7 +32,7 @@ public partial class WorldGenerator : Node2D
 
                 if (distance > CoreSize && distance <= halfSize)
                 {
-                    Tilemap.SetTile(position, RockFGTile, 1);
+                    World.SetTile(position, RockFGTile, 1);
 
                     if (distance < halfSize - 2)
                     {
@@ -40,7 +40,7 @@ public partial class WorldGenerator : Node2D
                         {
                             for (int j = -1; j <= 1; j++)
                             {
-                                Tilemap.SetTile(position + new Vector2I(i, j), RockBGTile, 0);
+                                World.SetTile(position + new Vector2I(i, j), RockBGTile, 0);
                             }
                         }
                     }

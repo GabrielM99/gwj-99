@@ -37,8 +37,8 @@ public partial class Projectile : Node2D
     }
 
 	private void OnContato(Node2D node){
-		if (node.GetParent() is NPC npc && npc.TipoNpc == NPCType.Enemy){
-            npc.vida.AplicarDano(Dano);
+		if (node.GetParent() is NPC npc && npc.Type == NPCType.Enemy){
+            npc.Health.AplicarDano(Dano);
         }
         QueueFree();
     }

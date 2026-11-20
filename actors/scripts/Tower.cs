@@ -30,7 +30,7 @@ public partial class Tower : Node2D
     /// </summary>
     /// <param name="area"></param>
 	private void InimigoDetectado(Node2D area){
-		if (area.GetParent() is NPC npc && npc.TipoNpc == NPCType.Enemy){
+		if (area.GetParent() is NPC npc && npc.Type == NPCType.Enemy){
             var projetilInstancia = Projetil.Instantiate() as Projectile;
             projetilInstancia.Dano = dano;
             GetTree().CurrentScene.AddChild(projetilInstancia);

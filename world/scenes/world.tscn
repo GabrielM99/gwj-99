@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://bcd3eu6kn14la"]
 
+[ext_resource type="Script" uid="uid://12e2hspjonf" path="res://world/scripts/World.cs" id="1_dfa8h"]
 [ext_resource type="Script" uid="uid://chlw1sj57dfkq" path="res://world/scripts/WorldGenerator.cs" id="1_fhsbw"]
 [ext_resource type="PackedScene" uid="uid://cahdspen7cv53" path="res://tiles/scenes/tilemap.tscn" id="2_fj7yv"]
 [ext_resource type="Resource" uid="uid://caeidobmak7wc" path="res://tiles/resources/rock_fg_tile.tres" id="2_le2xu"]
 [ext_resource type="Resource" uid="uid://c47lwve17rtls" path="res://tiles/resources/rock_bg_tile.tres" id="3_wqfff"]
+[ext_resource type="Script" uid="uid://dm3k77wf24qyr" path="res://world/scripts/WorldPathfindGrid.cs" id="4_wqfff"]
 [ext_resource type="PackedScene" uid="uid://bsayca18x8uyr" path="res://world/scenes/camera.tscn" id="5_036b0"]
 [ext_resource type="PackedScene" uid="uid://b060dhmgyfobk" path="res://player/scenes/player.tscn" id="6_dwbse"]
 [ext_resource type="Texture2D" uid="uid://7ku41dsb3s1e" path="res://debug/textures/icon.svg" id="7_pkg7o"]
@@ -15,16 +17,23 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbfbk"]
 size = Vector2(127.21473, 128)
 
-[node name="World" type="Node2D" unique_id=760113448]
+[node name="World" type="Node2D" unique_id=760113448 node_paths=PackedStringArray("Tilemap", "PathfindGrid")]
+script = ExtResource("1_dfa8h")
+Tilemap = NodePath("Tilemap")
+PathfindGrid = NodePath("PathfindGrid")
 
-[node name="WorldGenerator" type="Node2D" parent="." unique_id=1473644539 node_paths=PackedStringArray("Tilemap")]
+[node name="Generator" type="Node2D" parent="." unique_id=1473644539 node_paths=PackedStringArray("World")]
 script = ExtResource("1_fhsbw")
-Tilemap = NodePath("../Tilemap")
+World = NodePath("..")
 RockFGTile = ExtResource("2_le2xu")
 RockBGTile = ExtResource("3_wqfff")
 Size = 128
 CoreSize = 12
 Noise = 0.85
+
+[node name="PathfindGrid" type="Node" parent="." unique_id=1766325635 node_paths=PackedStringArray("Tilemap")]
+script = ExtResource("4_wqfff")
+Tilemap = NodePath("../Tilemap")
 
 [node name="Tilemap" parent="." unique_id=1398780299 instance=ExtResource("2_fj7yv")]
 

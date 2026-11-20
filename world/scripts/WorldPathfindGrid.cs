@@ -5,7 +5,7 @@ public partial class WorldPathfindGrid : Node
 	[Export] public DualGridTilemap Tilemap { get; set; }
 
 	// Região do mundo em coordenadas de células do TileMap.
-	[Export] public Rect2I Region { get; set; } = new(-100, -100, 200, 200);
+	[Export] public Rect2I Region { get; set; } = new(-64, -64, 128, 128);
 
 	private AStarGrid2D _astar;
 

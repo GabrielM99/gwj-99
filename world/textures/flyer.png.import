@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cug3x28oe5ngv"
-path="res://.godot/imported/wires21.png-0f549a2175a40bfdf5695e7eee17421a.ctex"
+uid="uid://bokdqs4fa2fgc"
+path="res://.godot/imported/flyer.png-1f4b873c65671294b4f9b0169335bfb2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world/textures/wires21.png"
-dest_files=["res://.godot/imported/wires21.png-0f549a2175a40bfdf5695e7eee17421a.ctex"]
+source_file="res://world/textures/flyer.png"
+dest_files=["res://.godot/imported/flyer.png-1f4b873c65671294b4f9b0169335bfb2.ctex"]
 
 [params]
 

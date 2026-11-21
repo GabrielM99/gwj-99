@@ -29,8 +29,9 @@ public partial class InputManager : Node
 
     public override void _UnhandledInput(InputEvent @event)
     {
-		if (PodeInteragirComputador && @event.IsActionPressed("interagir")){
-            EmitSignal(SignalName.ShowUIComputer,Variant.From(TipoComputadorParaAbrir));
+        if (PodeInteragirComputador && @event.IsActionPressed("interagir"))
+        {
+            EmitSignal(SignalName.ShowUIComputer, Variant.From(TipoComputadorParaAbrir));
             EmitSignal(SignalName.ApplyCameraOffset);
         }
     }

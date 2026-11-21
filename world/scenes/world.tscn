@@ -6,13 +6,30 @@
 [ext_resource type="Resource" uid="uid://caeidobmak7wc" path="res://tiles/resources/rock_fg_tile.tres" id="2_le2xu"]
 [ext_resource type="Resource" uid="uid://c47lwve17rtls" path="res://tiles/resources/rock_bg_tile.tres" id="3_wqfff"]
 [ext_resource type="Script" uid="uid://dm3k77wf24qyr" path="res://world/scripts/WorldPathfindGrid.cs" id="4_wqfff"]
+[ext_resource type="Script" uid="uid://caxth5l0q4eck" path="res://world/scripts/WorldLayer.cs" id="5_6nv2u"]
 [ext_resource type="PackedScene" uid="uid://bsayca18x8uyr" path="res://world/scenes/camera.tscn" id="5_036b0"]
 [ext_resource type="PackedScene" uid="uid://b060dhmgyfobk" path="res://player/scenes/player.tscn" id="6_dwbse"]
+[ext_resource type="Resource" uid="uid://clrnwkdc0wnfr" path="res://tiles/resources/rock2_bg_tile.tres" id="6_s23q3"]
+[ext_resource type="Resource" uid="uid://cka81i1wv46gm" path="res://tiles/resources/rock2_fg_tile.tres" id="7_nc1lp"]
 [ext_resource type="PackedScene" uid="uid://bymbbtapvysry" path="res://objects/scenes/computer.tscn" id="8_wse8f"]
 [ext_resource type="PackedScene" uid="uid://cy4oj3cy15wp8" path="res://ui/scenes/ui_computador.tscn" id="9_ic0uy"]
 [ext_resource type="PackedScene" uid="uid://cfd11yy3gh8es" path="res://objects/scenes/ladder.tscn" id="10_k3n1d"]
 [ext_resource type="PackedScene" uid="uid://dwpxa7dsj1wug" path="res://actors/scenes/robot.tscn" id="11_le2xu"]
 [ext_resource type="Texture2D" uid="uid://crcjj4larr7fq" path="res://world/textures/fullship.png" id="12_dfa8h"]
+
+[sub_resource type="Resource" id="Resource_6nv2u"]
+script = ExtResource("5_6nv2u")
+ForegroundTile = ExtResource("2_le2xu")
+BackgroundTile = ExtResource("3_wqfff")
+Weight = 1.0
+metadata/_custom_type_script = "uid://caxth5l0q4eck"
+
+[sub_resource type="Resource" id="Resource_d7cbm"]
+script = ExtResource("5_6nv2u")
+ForegroundTile = ExtResource("7_nc1lp")
+BackgroundTile = ExtResource("6_s23q3")
+Weight = 1.0
+metadata/_custom_type_script = "uid://caxth5l0q4eck"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tw4vo"]
 size = Vector2(4, 96)
@@ -48,8 +65,7 @@ Robot = NodePath("Robot")
 position = Vector2(0, -1)
 script = ExtResource("1_fhsbw")
 World = NodePath("..")
-RockFGTile = ExtResource("2_le2xu")
-RockBGTile = ExtResource("3_wqfff")
+Layers = Array[Resource]([SubResource("Resource_6nv2u"), SubResource("Resource_d7cbm")])
 Size = 128
 CoreSize = Vector2(55, 12)
 Center = Vector2i(0, 3)
@@ -67,7 +83,7 @@ zoom = Vector2(0.75, 0.75)
 
 [node name="Computer" parent="Spaceship" unique_id=1510360596 instance=ExtResource("8_wse8f")]
 z_index = 1
-position = Vector2(63, 23)
+position = Vector2(65, 12)
 
 [node name="ComputerUI" parent="Spaceship" unique_id=713065711 instance=ExtResource("9_ic0uy")]
 visible = false

@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://bymbbtapvysry"]
 
 [ext_resource type="Script" uid="uid://b4w37pv1a7jmk" path="res://objects/scripts/Computer.cs" id="1_jvttq"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ty43j"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+[ext_resource type="Texture2D" uid="uid://dx8pjx0fylmkq" path="res://world/textures/terminal_off.png" id="2_nknxn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgns8"]
-size = Vector2(32, 32)
+size = Vector2(64, 64)
 
 [node name="Computer" type="Node2D" unique_id=1510360596 node_paths=PackedStringArray("areaDeteccao")]
 script = ExtResource("1_jvttq")
@@ -14,9 +12,7 @@ TipoComputador = 1
 areaDeteccao = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1236061706]
-self_modulate = Color(0.49411765, 0, 0.05490196, 1)
-scale = Vector2(0.3, 0.3)
-texture = SubResource("CompressedTexture2D_ty43j")
+texture = ExtResource("2_nknxn")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=281492459]
 

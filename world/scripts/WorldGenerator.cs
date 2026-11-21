@@ -4,8 +4,7 @@ public partial class WorldGenerator : Node2D
 {
     [Export] public bool Enabled { get; private set; } = true;
     [Export] public World World { get; private set; }
-    [Export] public Tile RockFGTile { get; set; }
-    [Export] public Tile RockBGTile { get; set; }
+    [Export] public WorldLayer[] Layers { get; set; }
     [Export] public int Size { get; set; } = 64;
     [Export] public Vector2 CoreSize { get; set; } = new(16, 16);
     [Export] public Vector2I Center { get; set; }
@@ -34,25 +33,60 @@ public partial class WorldGenerator : Node2D
                 }
 
                 Vector2I position = new(x, y);
+                Vector2 relativePosition = position - Center;
 
-                float distance = position.DistanceTo(Center);
+                float distance = relativePosition.Length();
 
-                if (!IsInsideCapsule(position - Center, CoreSize) && distance <= halfSize)
+                if (distance > halfSize || IsInsideCapsule(relativePosition, CoreSize))
                 {
-                    World.SetTile(position, RockFGTile, 1);
+                    continue;
+                }
 
-                    if (distance < halfSize - 2)
+                GenerateLayer(position, distance, halfSize);
+            }
+        }
+    }
+
+    private void GenerateLayer(Vector2I position, float distance, float maxDistance)
+    {
+        float totalWeight = 0f;
+
+        foreach (WorldLayer layer in Layers)
+        {
+            totalWeight += layer.Weight;
+        }
+
+        float currentRadius = Mathf.Max(CoreSize.X, CoreSize.Y) / 2f;
+        float availableRadius = maxDistance - currentRadius;
+
+        foreach (WorldLayer layer in Layers)
+        {
+            float layerRadius = availableRadius * (layer.Weight / totalWeight);
+            float nextRadius = currentRadius + layerRadius;
+
+            if (distance <= nextRadius)
+            {
+                World.SetTile(position, layer.ForegroundTile, 1);
+
+                if (distance < maxDistance - 2)
+                {
+                    for (int i = -1; i <= 1; i++)
                     {
-                        for (int i = -1; i <= 1; i++)
+                        for (int j = -1; j <= 1; j++)
                         {
-                            for (int j = -1; j <= 1; j++)
-                            {
-                                World.SetTile(position + new Vector2I(i, j), RockBGTile, 0);
-                            }
+                            World.SetTile(
+                                position + new Vector2I(i, j),
+                                layer.BackgroundTile,
+                                0
+                            );
                         }
                     }
                 }
+
+                return;
             }
+
+            currentRadius = nextRadius;
         }
     }
 

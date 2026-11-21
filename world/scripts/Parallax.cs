@@ -1,4 +1,3 @@
-using System;
 using Godot;
 
 public partial class Parallax : Node2D
@@ -15,6 +14,7 @@ public partial class Parallax : Node2D
 		spriteRect.Position = Camera.GlobalPosition * Speed * 0.5f;
 
 		Sprite.RegionRect = spriteRect;
+		Sprite.Position = Camera.Offset;
 		Sprite.Scale = new Vector2(1f / Camera.Zoom.X, 1f / Camera.Zoom.Y);
 	}
 }

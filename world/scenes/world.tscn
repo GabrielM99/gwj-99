@@ -135,3 +135,7 @@ shape = SubResource("RectangleShape2D_nc1lp")
 
 [node name="Robot" parent="." unique_id=244378393 instance=ExtResource("11_le2xu")]
 position = Vector2(-204.135, -155.805)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=727227261]
+color = Color(0, 0, 0, 1)
+blend_mode = 2

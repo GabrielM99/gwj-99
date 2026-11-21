@@ -145,47 +145,48 @@ z_index = -2
 position = Vector2(34, 92)
 texture = ExtResource("9_0rtkn")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1388402022]
+[node name="Flyer" type="Sprite2D" parent="Decals" unique_id=1458283740]
+position = Vector2(-36, 94)
+texture = ExtResource("12_f6x2x")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1388402022]
 z_index = -2
+position = Vector2(0, 1)
 texture = ExtResource("10_61x5u")
 
-[node name="FullshipFg" type="Sprite2D" parent="." unique_id=468681860]
+[node name="Foreground" type="Sprite2D" parent="." unique_id=468681860]
 texture = ExtResource("11_pued5")
 
-[node name="WallBody" type="StaticBody2D" parent="." unique_id=399151007]
+[node name="WallColliders" type="StaticBody2D" parent="." unique_id=399151007]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBody" unique_id=1333916066]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallColliders" unique_id=1333916066]
 position = Vector2(-382, 96)
 shape = SubResource("RectangleShape2D_tw4vo")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="WallBody" unique_id=2060723466]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WallColliders" unique_id=2060723466]
 position = Vector2(-96, 141)
 shape = SubResource("RectangleShape2D_dfa8h")
 
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="WallBody" unique_id=2042586212]
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="WallColliders" unique_id=2042586212]
 position = Vector2(-190, 51)
 shape = SubResource("RectangleShape2D_6ywc2")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="WallBody" unique_id=1197501227]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WallColliders" unique_id=1197501227]
 position = Vector2(190, 48)
 shape = SubResource("RectangleShape2D_6nv2u")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="WallBody" unique_id=1717835693]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="WallColliders" unique_id=1717835693]
 position = Vector2(173, 48)
 shape = SubResource("RectangleShape2D_kl01c")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="WallBody" unique_id=464686458]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="WallColliders" unique_id=464686458]
 position = Vector2(64.5, 48)
 shape = SubResource("RectangleShape2D_s23q3")
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="WallBody" unique_id=1636076493]
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="WallColliders" unique_id=1636076493]
 position = Vector2(96, -45)
 shape = SubResource("RectangleShape2D_ccdw7")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="WallBody" unique_id=554835941]
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="WallColliders" unique_id=554835941]
 position = Vector2(2, -3)
 shape = SubResource("RectangleShape2D_nc1lp")
-
-[node name="Flyer" type="Sprite2D" parent="." unique_id=1458283740]
-position = Vector2(-36, 94)
-texture = ExtResource("12_f6x2x")

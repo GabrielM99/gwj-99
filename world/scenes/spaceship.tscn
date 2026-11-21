@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://ijubolkhgxeb"]
+
+[ext_resource type="PackedScene" uid="uid://bymbbtapvysry" path="res://objects/scenes/computer.tscn" id="1_68bx3"]
+[ext_resource type="PackedScene" uid="uid://cy4oj3cy15wp8" path="res://ui/scenes/ui_computador.tscn" id="2_01f5v"]
+[ext_resource type="PackedScene" uid="uid://cfd11yy3gh8es" path="res://objects/scenes/ladder.tscn" id="3_y10ed"]
+[ext_resource type="PackedScene" uid="uid://b060dhmgyfobk" path="res://player/scenes/player.tscn" id="4_n6hbx"]
+[ext_resource type="Texture2D" uid="uid://c7u6vvxrabdpe" path="res://world/textures/wires1.png" id="5_emb8t"]
+[ext_resource type="Texture2D" uid="uid://cug3x28oe5ngv" path="res://world/textures/wires2.png" id="6_74ape"]
+[ext_resource type="Texture2D" uid="uid://bw370ftqpdbgp" path="res://world/textures/notes3.png" id="7_mhfsr"]
+[ext_resource type="Texture2D" uid="uid://cor64efvuwmwc" path="res://world/textures/notes2.png" id="8_f1olg"]
+[ext_resource type="Texture2D" uid="uid://dial4cccldbbs" path="res://world/textures/notes1.png" id="9_0rtkn"]
+[ext_resource type="Texture2D" uid="uid://cdxxjd6w6km5j" path="res://world/textures/fullship_bg.png" id="10_61x5u"]
+[ext_resource type="Texture2D" uid="uid://dnb472ypu7c1m" path="res://world/textures/fullship_fg.png" id="11_pued5"]
+[ext_resource type="Texture2D" uid="uid://bokdqs4fa2fgc" path="res://world/textures/flyer.png" id="12_f6x2x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tw4vo"]
+size = Vector2(4, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfa8h"]
+size = Vector2(576, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ywc2"]
+size = Vector2(380, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6nv2u"]
+size = Vector2(4, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kl01c"]
+size = Vector2(30, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s23q3"]
+size = Vector2(129, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccdw7"]
+size = Vector2(184, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nc1lp"]
+size = Vector2(4, 90)
+
+[node name="Spaceship" type="Node2D" unique_id=1311410872]
+
+[node name="Computer" parent="." unique_id=1510360596 instance=ExtResource("1_68bx3")]
+z_index = 1
+position = Vector2(65, 12)
+
+[node name="ComputerUI" parent="." unique_id=713065711 instance=ExtResource("2_01f5v")]
+visible = false
+
+[node name="Ladder" parent="." unique_id=1873721393 instance=ExtResource("3_y10ed")]
+z_index = 1
+position = Vector2(144, 88)
+scale = Vector2(-1.5751832, 6.089813)
+
+[node name="Player" parent="." unique_id=2063339062 instance=ExtResource("4_n6hbx")]
+position = Vector2(79, 103)
+
+[node name="Decals" type="Node" parent="." unique_id=592421294]
+
+[node name="Wires1" type="Sprite2D" parent="Decals" unique_id=1162391767]
+z_index = -1
+position = Vector2(-98, 63)
+texture = ExtResource("5_emb8t")
+
+[node name="Wires2" type="Sprite2D" parent="Decals" unique_id=363404384]
+z_index = -1
+position = Vector2(-265, 72)
+texture = ExtResource("6_74ape")
+
+[node name="Wires3" type="Sprite2D" parent="Decals" unique_id=170993107]
+z_index = -1
+position = Vector2(117, 67)
+texture = ExtResource("5_emb8t")
+
+[node name="Wires4" type="Sprite2D" parent="Decals" unique_id=502728818]
+z_index = -1
+position = Vector2(68, -31)
+texture = ExtResource("5_emb8t")
+
+[node name="Wires5" type="Sprite2D" parent="Decals" unique_id=1023949158]
+z_index = -1
+position = Vector2(116, -23)
+texture = ExtResource("6_74ape")
+
+[node name="Notes3" type="Sprite2D" parent="Decals" unique_id=954300828]
+position = Vector2(114, 94)
+texture = ExtResource("7_mhfsr")
+
+[node name="Notes2" type="Sprite2D" parent="Decals" unique_id=1979156973]
+position = Vector2(107, -12)
+texture = ExtResource("8_f1olg")
+
+[node name="Notes1" type="Sprite2D" parent="Decals" unique_id=1302447951]
+position = Vector2(33, -5)
+texture = ExtResource("9_0rtkn")
+
+[node name="Notes4" type="Sprite2D" parent="Decals" unique_id=1291047127]
+position = Vector2(26, 5)
+texture = ExtResource("8_f1olg")
+
+[node name="Notes5" type="Sprite2D" parent="Decals" unique_id=814477127]
+position = Vector2(-52, 92)
+texture = ExtResource("9_0rtkn")
+
+[node name="Notes6" type="Sprite2D" parent="Decals" unique_id=259498219]
+position = Vector2(-18, 101)
+texture = ExtResource("9_0rtkn")
+
+[node name="Notes7" type="Sprite2D" parent="Decals" unique_id=10417659]
+z_index = -2
+position = Vector2(-212, 92)
+texture = ExtResource("7_mhfsr")
+
+[node name="Notes8" type="Sprite2D" parent="Decals" unique_id=2086150956]
+z_index = -2
+position = Vector2(-229, 95)
+texture = ExtResource("8_f1olg")
+
+[node name="Notes9" type="Sprite2D" parent="Decals" unique_id=1966187972]
+z_index = -2
+position = Vector2(-268, 97)
+texture = ExtResource("9_0rtkn")
+
+[node name="Notes10" type="Sprite2D" parent="Decals" unique_id=858830606]
+z_index = -2
+position = Vector2(-282, 88)
+texture = ExtResource("9_0rtkn")
+
+[node name="Notes11" type="Sprite2D" parent="Decals" unique_id=753838554]
+z_index = -2
+position = Vector2(-350, 94)
+texture = ExtResource("8_f1olg")
+
+[node name="Notes12" type="Sprite2D" parent="Decals" unique_id=1218487222]
+z_index = -2
+position = Vector2(49, 93)
+texture = ExtResource("8_f1olg")
+
+[node name="Notes13" type="Sprite2D" parent="Decals" unique_id=411102105]
+z_index = -2
+position = Vector2(37, 102)
+texture = ExtResource("9_0rtkn")
+
+[node name="Notes14" type="Sprite2D" parent="Decals" unique_id=1837964467]
+z_index = -2
+position = Vector2(34, 92)
+texture = ExtResource("9_0rtkn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1388402022]
+z_index = -2
+texture = ExtResource("10_61x5u")
+
+[node name="FullshipFg" type="Sprite2D" parent="." unique_id=468681860]
+texture = ExtResource("11_pued5")
+
+[node name="WallBody" type="StaticBody2D" parent="." unique_id=399151007]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBody" unique_id=1333916066]
+position = Vector2(-382, 96)
+shape = SubResource("RectangleShape2D_tw4vo")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WallBody" unique_id=2060723466]
+position = Vector2(-96, 141)
+shape = SubResource("RectangleShape2D_dfa8h")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="WallBody" unique_id=2042586212]
+position = Vector2(-190, 51)
+shape = SubResource("RectangleShape2D_6ywc2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WallBody" unique_id=1197501227]
+position = Vector2(190, 48)
+shape = SubResource("RectangleShape2D_6nv2u")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="WallBody" unique_id=1717835693]
+position = Vector2(173, 48)
+shape = SubResource("RectangleShape2D_kl01c")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="WallBody" unique_id=464686458]
+position = Vector2(64.5, 48)
+shape = SubResource("RectangleShape2D_s23q3")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="WallBody" unique_id=1636076493]
+position = Vector2(96, -45)
+shape = SubResource("RectangleShape2D_ccdw7")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="WallBody" unique_id=554835941]
+position = Vector2(2, -3)
+shape = SubResource("RectangleShape2D_nc1lp")
+
+[node name="Flyer" type="Sprite2D" parent="." unique_id=1458283740]
+position = Vector2(-36, 94)
+texture = ExtResource("12_f6x2x")

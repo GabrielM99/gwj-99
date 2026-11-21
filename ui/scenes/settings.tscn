@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://btufhlgyvnsat"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q5p1p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbyuf"]
+bg_color = Color(0.15294118, 0.15294118, 0.26666668, 0.49803922)
+
+[node name="Settings" type="Control" unique_id=1074602358]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Background" type="ColorRect" parent="." unique_id=1742413119]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.28627452, 0.3019608, 0.49411765, 0.49803922)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=641334234]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -248.5
+offset_right = 248.5
+offset_bottom = 300.0
+grow_horizontal = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=50849112]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_q5p1p")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=664634428]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_bottom = -49
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=88290676]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 80
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=204729339]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CenterContainer" unique_id=468722075]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=711773528]
+layout_mode = 2
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 20
+columns = 3
+
+[node name="Master" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=278621261]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Master"
+
+[node name="MasterSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=563783760]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+
+[node name="MasterPercentage" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=2121375604]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "100%"
+
+[node name="Music" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1092861434]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1356437936]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+
+[node name="MusicPercentage" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1475583871]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "100%"
+
+[node name="SFX" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=630022468]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1461502922]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+
+[node name="SFXPercentage" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1353717429]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "100%"
+
+[node name="Button" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=468602969]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_wbyuf")
+text = "Back"

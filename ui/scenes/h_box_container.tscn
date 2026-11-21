@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://h63h8vys7w5o"]
+
+[node name="HBoxContainer" type="HBoxContainer" unique_id=2087419771]
+custom_minimum_size = Vector2(100, 25)
+custom_maximum_size = Vector2(500, 50)
+
+[node name="Nome" type="Label" parent="." unique_id=1717883555]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Placeholder"
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="." unique_id=548418595]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+tick_count = 20
+ticks_position = 3
+
+[node name="Porcentagem" type="Label" parent="." unique_id=575946124]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "100%"

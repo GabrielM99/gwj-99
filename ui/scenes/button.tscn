@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://eco7hmbkrj2l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1xys"]
+bg_color = Color(0.28627452, 0.3019608, 0.49411765, 1)
+
+[node name="Button" type="Button" unique_id=2130005923]
+theme_override_styles/normal = SubResource("StyleBoxFlat_y1xys")
+text = "Quit"
